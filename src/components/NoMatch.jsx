@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 
-export default class Login extends Component {
+export default class NoMatch extends Component {
   render() {
     return (
       <div>
-        <p>Login</p>
+        <p>No Match</p>
       </div>
     )
   }

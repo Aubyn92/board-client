@@ -4,7 +4,7 @@ export default class ViewPost extends Component {
   render() {
     return (
       <div>
-        
+        <p>ViewPost</p>
       </div>
     )
   }

@@ -4,7 +4,7 @@ export default class NewPost extends Component {
   render() {
     return (
       <div>
-        
+        <p>NewPost</p>
       </div>
     )
   }
