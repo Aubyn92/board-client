@@ -7,7 +7,7 @@ import Login from './components/Login';
 import NewPost from './components/NewPost';
 import NoMatch from './components/NoMatch';
 import Posts from './components/Posts';
-import SignUp from './components/Signup';
+import SignUp from './components/SignUp';
 import UserProfile from './components/UserProfile';
 import ViewPost from './components/ViewPost';
 
