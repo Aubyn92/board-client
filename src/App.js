@@ -7,21 +7,20 @@ import Login from './components/Login';
 import NewPost from './components/NewPost';
 import NoMatch from './components/NoMatch';
 import Posts from './components/Posts';
-<<<<<<< HEAD
-import SignUp from './components/SignUp';
-=======
 import NavBar from './components/shared/NavBar';
-import SignUp from './components/Signup';
->>>>>>> master
+import SignUp from './components/SignUp';
 import UserProfile from './components/UserProfile';
 import ViewPost from './components/ViewPost';
+import ProtectedRoute from './ProtectedRoute';
+import Secrets from './Secrets';
 
 
 function App() {
   return (
     <>
     <NavBar />
-    <BrowserRouter>
+    <Switch>
+      <ProtectedRoute exact path="/secrets" component={Secrets} />
       <Route exact path={"/"} component ={HomePage} />
       <Route exact path={"/login"} component ={Login}/>
       <Route exact path={"/newpost"} component ={NewPost} />
@@ -36,7 +35,7 @@ function App() {
       <Route exact path="/" component ={HomePage} />
       <Route exact path="/posts/viewpost" component ={ViewPost} />
       <Route component={NoMatch} />
-    </BrowserRouter>
+      </Switch>
     </>
     );
   }
