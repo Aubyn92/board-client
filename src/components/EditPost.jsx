@@ -5,6 +5,7 @@ export default class EditPost extends Component {
     return (
       <div>
         <p>EditPost</p>
+
       </div>
     )
   }
