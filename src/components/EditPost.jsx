@@ -4,7 +4,8 @@ export default class EditPost extends Component {
   render() {
     return (
       <div>
-        <p>edit</p>
+        <p>EditPost</p>
+
       </div>
     )
   }
