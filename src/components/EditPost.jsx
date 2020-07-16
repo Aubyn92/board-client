@@ -63,6 +63,11 @@ export default class EditPost extends Component {
         </div>
       )
     );
+      <div>
+        <p>EditPost</p>
+
+      </div>
+    )
   }
 }
 
