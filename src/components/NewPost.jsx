@@ -2,6 +2,25 @@ import React, { Component } from 'react'
 
 export default class NewPost extends Component {
   render() {
+
+    onInputChange = (event) => {
+      this.setState({
+        [event.target.id]: event.target.value
+      })
+    }
+    
+    onFormSubmit = async (event) => {
+      event.preventDefault()
+      await fetch("http://localhost:3000/create", {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(this.state)
+      })
+      this.props.history.push("/posts")
+    }
+
     return (
       <div className="container">
         <form>
