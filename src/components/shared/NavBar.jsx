@@ -7,15 +7,15 @@ export default class NavBar extends Component {
     return (
       <div>
         <Breadcrumb>
-    <Breadcrumb.Item>Home</Breadcrumb.Item>
-    <Breadcrumb.Item>
-      <a href="">Application Center</a>
-    </Breadcrumb.Item>
-    <Breadcrumb.Item>
-      <a href="">Application List</a>
-    </Breadcrumb.Item>
-    <Breadcrumb.Item>An Application</Breadcrumb.Item>
-  </Breadcrumb>,
+        <Breadcrumb.Item>Home</Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <a href="">Posts</a>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>
+          <a href="">Log In</a>
+        </Breadcrumb.Item>
+        <Breadcrumb.Item>Sign Up</Breadcrumb.Item>
+        </Breadcrumb>,
       </div>
     )
   }
