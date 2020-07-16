@@ -31,6 +31,7 @@ export default class EditPost extends Component {
   render() {
     const { title, url, description, loading } = this.state;
     return (
+<<<<<<< HEAD
       !loading && (
         <div className="container">
           <h1>Edit a post</h1>
@@ -63,6 +64,13 @@ export default class EditPost extends Component {
         </div>
       )
     );
+=======
+      <div>
+        <p>EditPost</p>
+
+      </div>
+    )
+>>>>>>> master
   }
 }
 
