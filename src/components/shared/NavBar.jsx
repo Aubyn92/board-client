@@ -1,22 +1,39 @@
-import React, { Component } from 'react'
-import { Breadcrumb } from 'antd';
-import 'antd/dist/antd.css';
+import React, { Component } from "react";
 
 export default class NavBar extends Component {
   render() {
     return (
-      <div>
-        <Breadcrumb>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <a href="">Posts</a>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>
-          <a href="">Log In</a>
-        </Breadcrumb.Item>
-        <Breadcrumb.Item>Sign Up</Breadcrumb.Item>
-        </Breadcrumb>,
-      </div>
-    )
+      <nav>
+        <ul>
+          <li>
+            <a href="/">home</a>
+          </li>
+          <li>
+            <a href="/posts">posts</a>
+          </li>
+          <li>
+            <a href="/login">log in</a>
+          </li>
+          <li>
+          <a href="/posts/create">create new post</a>
+          </li>
+          <li>
+          <a href="/signup">sign up</a>
+          </li>
+          <li>
+          <a href="/posts/:id/userprofile">user profile</a>
+          </li>
+          <li>
+          <a href="/posts/categorypage">categories page</a>
+          </li>
+          <li>
+          <a href="/posts/viewpost">view post</a>
+          </li>
+          <li>
+          <a href="/posts/:id/edit">edit post</a>
+          </li>
+        </ul>
+      </nav>
+    );
   }
 }

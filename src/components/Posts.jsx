@@ -7,8 +7,8 @@ export default class Posts extends Component {
 
   getPosts = async () => {
     const response = await fetch("http://localhost:3000")
-    const posts = await response.json()
-    this.setState({ posts: posts })
+    const data = await response.json()
+    this.setState({ posts: data })
   }
 
   deletePost = async (id) => {
