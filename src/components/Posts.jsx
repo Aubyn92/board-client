@@ -24,6 +24,7 @@ export default class Posts extends Component {
         <div key={index}>
           <h3>{post.title}</h3>
           <p>{post.description}</p>
+          <p>Tag{post.tag}</p>
           <p>{moment(post.created_at).startOf('minute').fromNow()}</p>
           <div className="edit-delete-container">
             <Link to={`/posts/${post.id}/edit`}>Edit</Link>

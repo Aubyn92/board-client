@@ -28,10 +28,16 @@ render() {
     return (
       <div className="container">
         <form onSubmit={this.onFormSubmit}>
+
           <label htmlFor="title">Title</label>
           <input type="text" name="title" id="title" />
+
+          <label htmlFor="tag">Tag</label>
+          <input type="text" name="tag" id="tag" />
+
           <label htmlFor="description">Description</label>
           <textarea name="description" id="description"></textarea>
+
           <input type="submit" value="Submit" />
         </form>
       </div>
