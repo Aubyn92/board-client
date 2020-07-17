@@ -1,39 +1,40 @@
 import React, { Component } from 'react'
 
 export default class NewPost extends Component {
-  render() {
-  return (
-    <h1>Create new post</h1>
-    // onInputChange = (event) => {
-    //   this.setState({
-    //     [event.target.id]: event.target.value
-    //   })
-    // }
-    
-    // onFormSubmit = async (event) => {
-    //   event.preventDefault()
-    //   await fetch("http://localhost:3000/create", {
-    //     method: "POST",
-    //     headers: {
-    //       'Content-Type': "application/json"
-    //     },
-    //     body: JSON.stringify(this.state)
-    //   })
-    //   this.props.history.push("/posts")
-    // }
+  
+    onInputChange = (event) => {
+      const key = event.target.id;
+      this.setState({
+        [key]: event.target.value,
+      });
+    };
 
-    // return (
-    //   <div className="container">
-    //     <form>
-    //       <label htmlFor="title">Title</label>
-    //       <input type="text" name="title" id="title" />
-    //       <label htmlFor="url">Url</label>
-    //       <input type="text" name="url" id="url" />
-    //       <label htmlFor="description">Description</label>
-    //       <textarea name="description" id="description"></textarea>
-    //       <input type="submit" value="Submit" />
-    //     </form>
-    //   </div>
+    onCheckBoxChange = (event) => {
+      console.log(event.target.value);
+    }
+    
+    onFormSubmit = async (event) => {
+      event.preventDefault()
+      await fetch("http://localhost:3000/posts", {
+        method: "POST",
+        headers: {
+          'Content-Type': "application/json"
+        },
+        body: JSON.stringify(this.state)
+      })
+      this.props.history.push("/posts");
+    }
+render() {
+    return (
+      <div className="container">
+        <form onSubmit={this.onFormSubmit}>
+          <label htmlFor="title">Title</label>
+          <input type="text" name="title" id="title" />
+          <label htmlFor="description">Description</label>
+          <textarea name="description" id="description"></textarea>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
   )
   }
 }

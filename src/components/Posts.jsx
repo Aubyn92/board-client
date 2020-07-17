@@ -27,7 +27,7 @@ export default class Posts extends Component {
           <p>{moment(post.created_at).startOf('minute').fromNow()}</p>
           <div className="edit-delete-container">
             <Link to={`/posts/${post.id}/edit`}>Edit</Link>
-            <span onClick={() => this.deletePost(post.id)}>Delete</span>
+            <button onClick={() => this.deletePost(post.id)}>Delete</button>
           </div>
           <hr/>
         </div>
