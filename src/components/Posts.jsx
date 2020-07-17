@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom'
 import moment from 'moment'
 
 export default class Posts extends Component {
-  state = { posts: [] }
+  state = { posts: [] };
 
   getPosts = async () => {
-    const response = await fetch("http://localhost:3000")
-    const data = await response.json()
+    const response = await fetch("http://localhost:3000/posts");
+    const data = await response.json();
     this.setState({ posts: data })
   }
 
@@ -24,7 +24,6 @@ export default class Posts extends Component {
         <div key={index}>
           <h3>{post.title}</h3>
           <p>{post.description}</p>
-          <span><a href={post.url} target="_blank" rel="noopener noreferrer">{post.url}</a></span>
           <p>{moment(post.created_at).startOf('minute').fromNow()}</p>
           <div className="edit-delete-container">
             <Link to={`/posts/${post.id}/edit`}>Edit</Link>
@@ -36,15 +35,11 @@ export default class Posts extends Component {
     })
   }
 
-  async componentDidMount() {
-    this.getPosts()
+  componentDidMount() {
+    this.getPosts();
   }
 
-  render() {
-    return (
-      <div>
-        {this.renderPosts()}
-      </div>
-    )
+ render() {
+    return this.renderPosts() 
   }
 }
