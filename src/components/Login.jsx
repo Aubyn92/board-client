@@ -52,6 +52,7 @@ export default class Login extends Component {
             name="email"
             id="email"
             value={email}
+            data-testid="email"
             onChange={this.onInputChange}
           />
           <label htmlFor="password">Password</label>
@@ -60,6 +61,7 @@ export default class Login extends Component {
             name="password"
             id="password"
             value={password}
+            data-testid="password"
             onChange={this.onInputChange}
           />
           <input type="submit" value="Submit" />

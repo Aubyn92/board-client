@@ -1,14 +1,3 @@
-// describe("clicking on login", () => {
-//     it("should go to the login page", () => {
-//       cy.visit("/");
-//       cy.findByText(/Login/).click();
-//       cy.url().should("include", "/login");
-//     });
-//   it.only("should render email and password inputs", () => {
-//     cy.findByLabelText(/email/i).should("exist");
-//     cy.findByLabelText(/password/i).should("exist");
-//   });
-// });
 describe("when clicking on login from the homepage user", () => {
     beforeEach(() => {
       cy.visit("/");
@@ -17,14 +6,30 @@ describe("when clicking on login from the homepage user", () => {
  
     it("should go to the login page", () => {
       cy.url().should("include", "/login");
-    });
+    });  
  
-    it("should see email and password inputs", () => {
+    it("should render email and password inputs", () => {
       cy.findByLabelText(/email/i).should("exist");
       cy.findByLabelText(/password/i).should("exist");
     });
-  });
+});
 
+  describe("with the correct login credentials user", () => {
+    before(() => {
+       cy.fixture("user.json").then((user) => {
+       cy.visit("/login")
+       cy.findByLabelText(/email/i).type(user.email)
+       cy.findByLabelText(/password/i).type(user.password)    
+    })
+});
 
+    // it("should be able to click on submit and be navigated to /posts", () => {
+    //     cy.get("form").submit()
+    //     cy.url().should('eql', "http://localhost:8080/posts")
+    //   });
 
- 
+      after(() => {
+        window.localStorage.removeItem("token")
+        window.sessionStorage.removeItem("auth")
+      })
+    });
