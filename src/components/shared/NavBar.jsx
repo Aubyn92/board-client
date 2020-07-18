@@ -12,7 +12,7 @@ export default class NavBar extends Component {
             <a href="/posts">posts</a>
           </li>
           <li>
-            <a href="/login">Login</a>
+            <a href="/login" data-testid="login">Login</a>
           </li>
           <li>
           <a href="/posts/create">create new post</a>

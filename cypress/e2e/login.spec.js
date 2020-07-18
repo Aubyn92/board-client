@@ -12,7 +12,7 @@
 describe("when clicking on login from the homepage user", () => {
     beforeEach(() => {
       cy.visit("/");
-      cy.findByText(/Login/).click();
+      cy.findByTestId(/login/).click();
     });
  
     it("should go to the login page", () => {
