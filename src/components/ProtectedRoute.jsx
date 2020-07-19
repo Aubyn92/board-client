@@ -16,7 +16,9 @@ class ProtectedRoute extends React.Component {
       })
       if (response.status >= 400) {
         throw(new Error("not authorized"))
-      } else {        
+      } else { 
+        const { jwt } = await response.json()
+        localStorage.setItem('token', jwt)     
         this.setState({
           auth: true,
           loading: false,
@@ -29,6 +31,7 @@ class ProtectedRoute extends React.Component {
       });
     }
   }
+ 
 
   render() {
     const { loading, auth } = this.state;
