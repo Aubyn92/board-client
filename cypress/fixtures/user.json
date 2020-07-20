@@ -1,4 +1,5 @@
 {
   "email": "H@gmail.com",
-  "password": "orange"
+  "password": "orange",
+  "token": "eyJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTUzMDI5NjEsInN1YiI6MX0.eMQfNHM7kdc9ziqgAiSruwbll5jI0-xcAkMgD0QOwQU"
 }

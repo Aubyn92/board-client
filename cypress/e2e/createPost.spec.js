@@ -2,8 +2,9 @@ import { postBuilder } from '../support/generate'
 
 describe("when adding text to make a new post user", () => {
   beforeEach(() => {
-    cy.fixture("token").then(({ jwt }) => {
-      window.localStorage.setItem("token", jwt);
+    cy.fixture("user").then((user) => {
+      window.localStorage.setItem("token", user.token);
+      window.sessionStorage.setItem("auth", true);
     });
   });
 

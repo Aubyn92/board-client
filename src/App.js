@@ -23,7 +23,7 @@ class App extends React.Component {
           <ProtectedRoute exact path={"/posts"} component={Posts} />
           <Route exact path={"/login"} component={Login} />
           <Route exact path="/signup" component={SignUp} />
-          <Route exact path="/posts/:id/userprofile" component={UserProfile} />
+          <ProtectedRoute exact path="/posts/:id/userprofile" component={UserProfile} />
           <Route exact path="/posts/categorypage" component={CategoryPage} />
           <Route exact path="/posts/viewpost" component={ViewPost} />
           <ProtectedRoute exact path="/posts/:id/edit" component={EditPost} />
