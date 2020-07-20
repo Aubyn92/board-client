@@ -61,7 +61,7 @@ export default class Login extends Component {
             name="password"
             id="password"
             value={password}
-            data-testid="email"
+            data-testid="password"
             onChange={this.onInputChange}
           />
           <input type="submit" value="Submit" />

@@ -45,7 +45,7 @@ const NavBar = () => {
     <Link to="/">BOARD</Link>
       <Link to="/posts">Posts</Link>
       <Link to="/login" data-testid="login">Login</Link>
-      <Link to="/sign-up">Sign Up</Link>
+      <Link to="/sign-up" data-testid="sign-up">Sign Up</Link>
       <span
         onClick={() => {
           localStorage.removeItem("token");

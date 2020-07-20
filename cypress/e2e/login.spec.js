@@ -15,7 +15,7 @@ describe("when clicking on login from the homepage user", () => {
         cy.findByLabelText(/email/i).type(email).should("contain.value", email)
         cy.findByLabelText(/password/i).type(password).should("contain.value", password)
     })
-    
+
     it("should see email and password inputs", () => {
       cy.findByLabelText(/email/i).should("exist");
       cy.findByLabelText(/password/i).should("exist");
@@ -35,7 +35,7 @@ describe("with the correct login credentials user", () => {
 
     it("should be able to click on submit and be navigated to /posts", () => {
         cy.get("form").submit()
-        cy.url().should('eql', "http://localhost:8080/posts")
+        cy.url().should('eq', "http://localhost:8080/posts")
       });
 
       after(() => {

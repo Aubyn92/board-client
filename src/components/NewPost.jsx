@@ -5,7 +5,7 @@ export default class NewPost extends Component {
     const key = event.target.id;
     if (event.target?.files) {
       this.setState({
-        [key]: event.target.value[0],
+        [key]: event.target.files[0],
       });
     } else {
       this.setState({
