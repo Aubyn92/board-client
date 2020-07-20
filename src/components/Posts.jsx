@@ -1,22 +1,27 @@
-import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
-import moment from 'moment'
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import moment from "moment";
 
 export default class Posts extends Component {
   state = { posts: [] };
 
   getPosts = async () => {
-    const response = await fetch("http://localhost:3000/posts");
+    const response = await fetch("http://localhost:3000/posts", {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+
     const data = await response.json();
-    this.setState({ posts: data })
-  }
+    this.setState({ posts: data });
+  };
 
   deletePost = async (id) => {
     await fetch(`http://localhost:3000/posts/${id}`, {
-      method: "DELETE"
-    })
-    this.getPosts()
-  }
+      method: "DELETE",
+    });
+    this.getPosts();
+  };
 
   renderPosts = () => {
     return this.state.posts.map((post, index) => {
@@ -25,22 +30,30 @@ export default class Posts extends Component {
           <h3>{post.title}</h3>
           <p>{post.description}</p>
           <p>{post.tag}</p>
-          <p>{moment(post.created_at).startOf('minute').fromNow()}</p>
+          <p>{moment(post.created_at).startOf("minute").fromNow()}</p>
           <div className="edit-delete-container">
             <Link to={`/posts/${post.id}/edit`}>Edit</Link>
             <button onClick={() => this.deletePost(post.id)}>Delete</button>
+            <Link
+              to={{
+                pathname: `/posts/${post.id}`,
+                state: post,
+              }}
+            >
+              <button>Show</button>
+            </Link>
           </div>
-          <hr/>
+          <hr />
         </div>
-      )
-    })
-  }
+      );
+    });
+  };
 
   componentDidMount() {
     this.getPosts();
   }
 
- render() {
-    return this.renderPosts() 
+  render() {
+    return this.renderPosts();
   }
 }

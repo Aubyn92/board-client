@@ -4,7 +4,8 @@ export default class HomePage extends Component {
   render() {
     return (
       <div>
-        <p>HomePage</p>
+        <h1>Feel connected</h1>
+        <p>Share your interests, discover new ones</p>
       </div>
     )
   }
