@@ -23,7 +23,11 @@ export default class EditPost extends Component {
 
   async componentDidMount() {
     const { id } = this.state
-    const response = await fetch(`http://localhost:3000/posts/${id}`);
+    const response = await fetch(`http://localhost:3000/posts/${id}`, {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
     const { title, image_url, description, tag } = await response.json();
     this.setState({ title, image_url, description, tag, loading: false });
   }
