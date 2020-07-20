@@ -1,4 +1,4 @@
-// import { userBuilder } from "../support/generate";
+import { userBuilder } from "../support/generate";
 
 describe("when clicking on login from the homepage user", () => {
     beforeEach(() => {
@@ -10,6 +10,12 @@ describe("when clicking on login from the homepage user", () => {
       cy.url().should("include", "/login");
     });  
  
+    it("should be able to type into email and password inputs", () => {
+        const { email, password } = userBuilder()
+        cy.findByLabelText(/email/i).type(email).should("contain.value", email)
+        cy.findByLabelText(/password/i).type(password).should("contain.value", password)
+    })
+    
     it("should see email and password inputs", () => {
       cy.findByLabelText(/email/i).should("exist");
       cy.findByLabelText(/password/i).should("exist");
@@ -17,11 +23,6 @@ describe("when clicking on login from the homepage user", () => {
 });
 
 
-    // it("should be able to type into email and password inputs", () => {
-    //     const { email, password } = userBuilder()
-    //     cy.findByLabelText(/email/i).type(email).should("contain.value", email)
-    //     cy.findByLabelText(/password/i).type(password).should("contain.value", password)
-    // })
 
 describe("with the correct login credentials user", () => {
     before(() => {
