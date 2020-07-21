@@ -31,16 +31,24 @@ export default class Posts extends Component {
     return this.state.posts.map((post, index) => {
       return (
         <div key={index}>
-          
-          <h3>{post.title}</h3>
-          <p>{post.description}</p>
+        <div class="card">
+          <header class="card-header">
+          <p class="card-header-title">{post.title}</p>
+          </header>
+          <div class="card-content">
+            <div class="content">
           <p>{post.tag}</p>
+
+          <p>{post.description}</p>
           <p>{moment(post.created_at).startOf("minute").fromNow()}</p>
+            </div>
+            </div>
           <div className="edit-delete-container">
+            <footer class="card-footer">
             {this.state.currentUser === post.user_id && (
               <React.Fragment>
-                <Link to={`/posts/${post.id}/edit`}>Edit</Link>
-                <button onClick={() => this.deletePost(post.id)}>Delete</button>
+                <Link to={`/posts/${post.id}/edit`}><button class="card-foot-item button is-dark">Edit</button></Link>
+                <button class="card-footer-item button is-dark"  onClick={() => this.deletePost(post.id)}>Delete</button>
               </React.Fragment>
             )}
             <Link
@@ -49,11 +57,15 @@ export default class Posts extends Component {
                 state: post,
               }}
             >
-              <button>Show</button>
+              <button class="card-footer-item button is-dark" >Show</button>
             </Link>
+            </footer>
           </div>
           <hr />
+          
+          </div>
         </div>
+        
       );
     });
   };
