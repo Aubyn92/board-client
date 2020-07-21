@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 export default class EditPost extends Component {
-  state = { title: "", image_url: "", description: "", tag: "", loading: true, id: this.props.match.params.id };
+  state = { title: "", image_url: "", description: "", tag: "", loading: true, error: null, postProps: null, id: this.props.match.params.id };
   onInputChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value
@@ -15,6 +15,7 @@ export default class EditPost extends Component {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify({ title, image_url, description, tag }),
     });
