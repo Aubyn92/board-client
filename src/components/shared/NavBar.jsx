@@ -18,9 +18,9 @@ const NavBar = () => {
   //         <li>
   //           <a href="/login" data-testid="login">Login</a>
   //         </li>
-  //         <li>
-  //         <a href="/posts/create">create new post</a>
-  //         </li>
+         <li>
+        <a href="/posts/create">create new post</a>
+          // </li>
   //         <li>
   //         <a href="/signup">sign up</a>
   //         </li>
@@ -44,6 +44,7 @@ const NavBar = () => {
     {/* <div> */}
     <Link to="/">BOARD</Link>
       <Link to="/posts">Posts</Link>
+      <Link to="/posts/create">Create new post</Link>
       <Link to="/login" data-testid="login">Login</Link>
       <Link to="/sign-up" data-testid="sign-up">Sign Up</Link>
       <span
