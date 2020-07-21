@@ -41,6 +41,7 @@ export default class Posts extends Component {
 
           <p>{post.description}</p>
           <p>{moment(post.created_at).startOf("minute").fromNow()}</p>
+          {post.image && <img src={post.image} alt={post.title} />}
             </div>
             </div>
           <div className="edit-delete-container">
