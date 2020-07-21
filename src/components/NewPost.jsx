@@ -14,27 +14,20 @@ export default class NewPost extends Component {
     }
   };
 
-  // onCheckBoxChange = (event) => {
-  //   console.log(event.target.value);
-  // };
-
   onFormSubmit = async (event) => {
     event.preventDefault();
-    var data = new FormData();
+    const data = new FormData();
     for (let key in this.state) {
       data.append(`post[${key}]`, this.state[key]);
     }
     const response = await fetch("http://localhost:3000/posts", {
       method: "POST",
       headers: {
-        // "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      // body: JSON.stringify(this.state),
       body: data,
     });
-    // const { image, post } = await response.json();
-    // const newPost = await Response.json()
+    const { image, post } = await response.json();
     this.props.history.push("/posts");
   };
 
@@ -43,8 +36,6 @@ export default class NewPost extends Component {
       <>
         <h1>Create a post</h1>
         <form onSubmit={this.onFormSubmit} encType="multipart/form-data">
-          {/* <div className="container"> */}
-          {/* <form onSubmit={this.onFormSubmit}> */}
           <label htmlFor="title">Title</label>
           <input
             type="text"
@@ -76,7 +67,6 @@ export default class NewPost extends Component {
 
           <input type="submit" value="Submit" />
         </form>
-        {/* </div> */}
       </>
     );
   }
