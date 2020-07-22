@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import { PostsContext } from '../context/posts-context'
 
 export default class Posts extends Component {
+  static contextType = PostsContext;
   state = { posts: [] };
 
   getPosts = async () => {
@@ -76,6 +78,8 @@ export default class Posts extends Component {
   }
 
   render() {
-    return this.renderPosts();
+    console.log(this.context)
+    this.context.dispatch()
+    return <div>{this.renderPosts()}</div>;
   }
 }

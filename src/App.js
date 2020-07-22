@@ -12,11 +12,14 @@ import EditPost from "./components/EditPost";
 import ProtectedRoute from "./components/ProtectedRoute";
 import NewPost from "./components/NewPost";
 import NoMatch from "./components/NoMatch";
+import { PostsContext, dispatch } from '../context/posts-context';
 
 class App extends React.Component {
+  state = { posts: [], dispatch: dispatch.bind(this) }
+
   render() {
     return (
-      <>
+      <PostsContext.Provider value={this.state}>
         <NavBar />
         <Switch>
           <Route exact path={"/"} component={HomePage} />
@@ -25,12 +28,12 @@ class App extends React.Component {
           <Route exact path="/sign-up" component={SignUp} />
           <ProtectedRoute exact path="/posts/:id/userprofile" component={UserProfile} />
           <Route exact path="/posts/categorypage" component={CategoryPage} />
-          <Route exact path="/posts/:id/viewpost" component={ViewPost} />
+          <Route exact path="/posts/viewpost" component={ViewPost} />
           <ProtectedRoute exact path="/posts/:id/edit" component={EditPost} />
           <ProtectedRoute exact path="/posts/create" component={NewPost} />
           <Route component={NoMatch} />
         </Switch>
-      </>
+        </PostsContext.Provider>
     );
   }
 }
