@@ -1,3 +1,6 @@
+'Board' is an app designed for people who are interested in expanding or sharing their knowledge on particular topics and hobbies, since a lot of people have been in isolation because of the pandemic. We thought that it would be a great idea to create this platform during this time as a way in which people who want to use their time productively can have an avenue for it. Also as a way of feeling connected. Although it was created with the intention of providing a creative outlet, as well as the aforementioned reasons above, it will not just be intended for use only during the pandemic, but beyond this time. The great thing about this app is it can always be expanded upon by users and ourselves anytime in the future.
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
