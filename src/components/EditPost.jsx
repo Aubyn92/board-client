@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { PostsContext } from "../context/posts-context";
 
 export default class EditPost extends Component {
-  static contextType = Posts.Context;
+  static contextType = PostsContext;
   state = {
     title: "",
     tag: "",
@@ -33,7 +33,7 @@ export default class EditPost extends Component {
       const data = new FormData();
       data.append('post[image]', uploadedImage)
     // await fetch(`http://localhost:3000/posts/${id}`, {
-      const response = await fetch(`http://localhost:3000/posts/image/${id}`, {
+      const response = await fetch(`http://localhost:3000/posts/${id}`, {
       method: "PUT",
       body: data,
       headers: {
@@ -44,19 +44,8 @@ export default class EditPost extends Component {
       image = await response.text()
     }
 
-    this.context.dispatch("update", {
-      title,
-      tag,
-      description,
-      id,
-      created_at,
-      user_id,
-      updated_at: new Date(),
-      image
 
-    });
-
-    fetch(`http://localhost:3000/posts/${id}`, {
+    await fetch(`http://localhost:3000/posts/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -86,7 +75,7 @@ export default class EditPost extends Component {
     const { title, tag, description, loading } = this.state;
     return (
       !loading && (
-        <div className="container">
+        <>
           <h1>Edit a post</h1>
           <form onSubmit={this.onFormSubmit} encType="multipart/form-data">
             <label htmlFor="title">Title</label>
@@ -96,7 +85,7 @@ export default class EditPost extends Component {
               id="title"
               onChange={this.onInputChange}
               value={title}
-            />
+              />
             <label htmlFor="tag">Tag</label>
             <input
               type="text"
@@ -121,8 +110,11 @@ export default class EditPost extends Component {
             />
             <input type="submit" value="Submit" />
           </form>
-        </div>
+        </>
       )
     );
   }
 }
+
+  
+

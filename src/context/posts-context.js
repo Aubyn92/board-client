@@ -22,7 +22,7 @@ function dispatch(action, value) {
       break;
     case "update": 
       this.setState((state) => {
-        const posts = state.posts.map((posts) => {
+        const posts = state.posts.map((post) => {
           if (value.id === post.id) {
             return value
           } else {

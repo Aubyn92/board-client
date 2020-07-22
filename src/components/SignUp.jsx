@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 
 export default class SignUp extends Component {
   state = { email: "", password: "" };
@@ -14,34 +14,29 @@ export default class SignUp extends Component {
     event.preventDefault();
     const { email, password } = this.state;
     try {
-      const response = await fetch(
-        "http://localhost:3000/sign-up", 
-        {
+      const response = await fetch("http://localhost:3000/sign-up", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ user: { email, password }}),
-      }
-    );
+        body: JSON.stringify({ user: { email, password } }),
+      });
       if (response.status >= 400) {
         throw new Error("incorrect credentials");
       } else {
-        const response = await fetch(
-          "http://localhost:3000/login", 
-          {
+        const response = await fetch("http://localhost:3000/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ auth: { email, password }}),
-        })
-        const { jwt } = await response.json()
+          body: JSON.stringify({ auth: { email, password } }),
+        });
+        const { jwt } = await response.json();
         localStorage.setItem("token", jwt);
         this.props.history.push("/posts");
       }
     } catch (err) {
-      console.log(err.message)
+      console.log(err.message);
     }
   };
 

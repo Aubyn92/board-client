@@ -1,47 +1,38 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
+import NoMatch from "./NoMatch";
 
 export default class ViewPost extends Component {
+  state = { post: null, error: false };
+  async componentDidMount() {
+    const id = this.props.match.params.id;
+    try {
+      const anotherResponse = await fetch(`http://localhost:3000/posts/${id}`);
+      if (anotherResponse.status >= 400) {
+        throw "error";
+      }
+      const post = await anotherResponse.json();
+      console.log(post);
+      this.setState({ post: post });
+    } catch (error) {
+      this.setState({ error: true });
+    }
+  }
+
   render() {
-    const post = this.props.post.state;
+    const post = this.state.post;
+    const error = this.state.error;
+    if (error) {
+      return <NoMatch />;
+    }
     return (
-      <div>
-        <h1>Title: {post.title}</h1>
-        <p>Category: {post.tag}</p>
-        <p>Description: {post.description}</p>
-        <button onClick={this.props.history.goBack}>Back</button>
-      </div>
+      post && (
+        <div>
+          <h1>Title: {post.title}</h1>
+          <p>Category: {post.tag}</p>
+          <p>Description: {post.description}</p>
+          <button onClick={this.props.history.goBack}>Back</button>
+        </div>
+      )
     );
   }
 }
-  //   state = {
-  //     id: this.props.match.params.id,
-  //   };
-  
-  //   async componentDidMount() {
-  //     // console.log(this.props)
-  //     // console.log(this.props.location.state.location)
-  //     const { id } = this.state;
-  //     const anotherResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts/${id}`, {
-  //       headers: {
-  //       'Authorization': `Bearer ${localStorage.getItem('token')}`
-  //       }
-  //     });
-  //     const countries = await response.json();
-  //     this.setState({ posts: posts, post: post});
-  //   }
-  
-  //   render() {
-  //     const post = this.props.state;
-  //     return (
-  //       <div className="host">
-  //       <>
-  //       <div className="host-content">
-  //           <h3>Title: {post.title}</h3>
-  //           <h3>Category: {post.tag}</h3>
-  //           <h3>Description:</h3><p>{post.description}</p>
-  //         </div>
-  //       </>
-  //       </div>
-  //     );
-  //   }
-  // }
