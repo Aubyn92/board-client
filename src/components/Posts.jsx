@@ -20,13 +20,13 @@ export default class Posts extends Component {
   };
 
   deletePost = async (id) => {
-    await fetch(`http://localhost:3000/posts/${id}`, {
+    this.context.dispatch("delete", id);
+    fetch(`http://localhost:3000/posts/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
-    this.getPosts();
   };
 
   renderPosts = () => {
