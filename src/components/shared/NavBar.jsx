@@ -10,8 +10,15 @@ const NavBar = () => {
   console.log(localStorage.getItem("token"));
   if (localStorage.getItem("token") != null) {
     return (
-      <nav>
+      
+        <div class ="display is-flex-mobile">
+      <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-start">
+      <a class="navbar-item">
         <Link to="/">BOARD</Link>
+        </a>
+        </div>
+        
         <Link to="/posts">Posts</Link>
         <Link to="/posts/create">Create Post</Link>
         <span
@@ -22,7 +29,9 @@ const NavBar = () => {
         >
           Logout
         </span>
+      
       </nav>
+</div>
     );
   }else{
     return (
