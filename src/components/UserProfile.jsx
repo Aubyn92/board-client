@@ -65,13 +65,13 @@ export default class UserProfile extends Component {
                     </button>
                   </React.Fragment>
                 )}
-                {/* <Link
+                <Link
                   to={{
                     pathname: `/posts/${post.id}`,
                     state: post,
                   }}
                 >
-                </Link> */}
+                </Link>
               </footer>
             </div>
             <hr />

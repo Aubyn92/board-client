@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { PostsContext } from "../context/posts-context";
 
 export default class EditPost extends Component {
-  static contextType = PostsContext;
   state = {
     title: "",
     tag: "",
@@ -28,7 +26,7 @@ export default class EditPost extends Component {
 
   onFormSubmit = async (event) => {
     event.preventDefault();
-    let { id, title, tag, description, created_at, user_id, image, uploadedImage } = this.state;
+    let { id, title, tag, description, image, uploadedImage } = this.state;
     if (uploadedImage) {
       const data = new FormData();
       data.append('post[image]', uploadedImage)
@@ -56,19 +54,19 @@ export default class EditPost extends Component {
     this.props.history.push("/posts");
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     // const { id } = this.state;
-    const foundPost = this.context.posts.find((post) => {
-      return post.id === this.state.id
-    })
-    this.setState({ ...foundPost, loading: false });
-    // const response = await fetch(`http://localhost:3000/posts/${id}`, {
-    //   headers: {
-    //     Authorization: `Bearer ${localStorage.getItem("token")}`,
-    //   },
-    // });
-    // const { title, tag, description, image } = await response.json();
-    // this.setState({ title, image, description, tag, loading: false });
+    // const foundPost = this.context.posts.find((post) => {
+      // return post.id === this.state.id
+    // })
+    // this.setState({ ...foundPost, loading: false }); #removed id below
+    const response = await fetch(`http://localhost:3000/posts`, { 
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+    });
+    const { title, tag, description, image } = await response.json();
+    this.setState({ title, image, description, tag, loading: false });
   }
 
   render() {

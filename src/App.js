@@ -12,7 +12,9 @@ import SignUp from "./components/SignUp";
 import UserProfile from "./components/UserProfile";
 import CategoryPage from "./components/CategoryPage";
 import ViewPost from "./components/ViewPost";
-import Comments from "./components/Comments";
+import Comment from "./components/Comment";
+import CommentBox from "./components/CommentBox";
+import CommentForm from "./components/CommentForm";
 
 class App extends React.Component {
   state = { posts: [] };
@@ -31,7 +33,9 @@ class App extends React.Component {
           <Route exact path="/" component={HomePage} />
           <Route exact path="/posts/categorypage" component={CategoryPage} />
           <Route exact path="/posts/:id" component={ViewPost} />
-          <Route exact path="/posts/:id" component={Comments} />
+          <Route exact path="/comments" component={Comment} />
+          <Route exact path="/comments" component={CommentForm} />
+          <Route exact path="/comments" component={CommentBox} />
           <Route component={NoMatch} />
         </Switch>
       </>
