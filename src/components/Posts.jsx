@@ -42,7 +42,7 @@ export default class Posts extends Component {
                 <p>{post.description}</p>
                 <p>{moment(post.created_at).startOf("minute").fromNow()}</p>
                 <div className="card-image">
-                  <figure className=" image is-4by3">
+                  <figure className= "image is-128x128px">
                 {post.image && <img  src={post.image} alt={post.title} />}
                 </figure>
                 </div>

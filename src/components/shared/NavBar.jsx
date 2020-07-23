@@ -1,67 +1,90 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-// import { PostsContext } from '../../context/posts-context';
-// import LoggedInNavbar from './LoggedInNavbar';
-// import LoggedOutNavbar from './LoggedOutNavbar';
 
 const NavBar = () => {
   const history = useHistory();
   console.log(localStorage.getItem("token"));
   if (localStorage.getItem("token") != null) {
     return (
-      
-        <div class ="display is-flex-mobile">
-      <nav class="navbar" role="navigation" aria-label="main navigation">
-    <div class="navbar-start">
-      <a class="navbar-item">
-        <Link to="/">BOARD</Link>
-        </a>
-        </div>
-        
-        <Link to="/posts">Posts</Link>
-        <Link to="/posts/create">Create Post</Link>
-        <span
-          onClick={() => {
-            localStorage.removeItem("token");
-            history.push("/login");
-          }}
-        >
-          Logout
-        </span>
-      
-      </nav>
-</div>
+      <div class="display is-flex-mobile">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              <Link to="/">BOARD</Link>
+            </a>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                  <li>
+                    {" "}
+                    <Link to="/posts">Posts</Link>{" "}
+                  </li>
+                  <li>
+                    {" "}
+                    <Link to="/posts/create">Create Post</Link>{" "}
+                  </li>
+                  <li>
+                    {" "}
+                    <Link to="/profile">User Profile</Link>{" "}
+                  </li>
+                  <li>
+                    {" "}
+                    <span
+                      onClick={() => {
+                        localStorage.removeItem("token");
+                        history.push("/login");
+                      }}
+                    >
+                      Logout
+                    </span>{" "}
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </nav>
+      </div>
     );
-  }else{
+  } else {
     return (
-      <nav>
-        <Link to="/">BOARD</Link>
-        <Link to="/posts">Posts</Link>
-        <Link to="/login" data-testid="login">
-          Login
-        </Link>
-        <Link to="/sign-up" data-testid="sign-up">
-          Sign Up
-        </Link>
-      </nav>
+      <div class="display is-flex-mobile">
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+          <div class="navbar-start">
+            <a class="navbar-item">
+              <Link to="/">BOARD</Link>
+            </a>
+          </div>
+          <div class="navbar-end">
+            <div class="navbar-item">
+              <nav class="breadcrumb" aria-label="breadcrumbs">
+                <ul>
+                  <li>
+                    <li>
+                      {" "}
+                      <Link to="/posts">Posts</Link>
+                    </li>
+                    <li>
+                      {" "}
+                      <Link to="/login" data-testid="login">
+                        Login
+                      </Link>
+                    </li>
+                    <li></li>{" "}
+                    <Link to="/sign-up" data-testid="sign-up">
+                      Sign Up
+                    </Link>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </nav>
+      </div>
     );
   }
 };
-// class NavBar extends React.Component {
-//   // static contextType = PostsContext
-
-//   render() {
-//     return (
-//       <nav>
-//         {this.context.currentUser || sessionStorage.getItem("auth") ? (
-//           <LoggedInNavbar history={this.props.history} context={this.context} />
-//         ) : (
-//           <LoggedOutNavbar />
-//         )}
-//       </nav>
-//     )
-//   }
-// };
 
 export default NavBar;
