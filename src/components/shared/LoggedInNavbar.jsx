@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const handleLogout = (props) => {
   localStorage.removeItem("token");
   sessionStorage.removeItem("auth");
-  props.context.dispatch("logout");
+  // props.context.dispatch("logout");
   props.history.push("/");
 };
 

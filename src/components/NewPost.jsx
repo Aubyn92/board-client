@@ -1,8 +1,6 @@
 import React, { Component } from "react";
-import { PostsContext } from "../context/posts-context";
 
 export default class NewPost extends Component {
-  static contextType = PostsContext;
   onInputChange = (event) => {
     const key = event.target.id;
     if (event.target?.files) {
@@ -30,7 +28,6 @@ export default class NewPost extends Component {
       body: data,
     });
     const { image, post } = await response.json();
-    this.context.dispatch("add", {...post, image});
     this.props.history.push("/posts");
   };
 

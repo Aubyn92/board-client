@@ -34,7 +34,7 @@ export default class ViewPost extends Component {
           <p>{moment(post.created_at).startOf("minute").fromNow()}</p>
           {post.image && <img src={post.image} alt={post.title} />}
           <button onClick={this.props.history.goBack}>Back</button>
-          <form action="/posts/{{post._id}}/comments" method="post">
+          <form action="/posts/{{post_id}}/comments" method="post">
           <textarea class='form-control' name="content" placeholder="Comment"></textarea>
           <div class="text-right">
           <button type="submit" class="btn btn-primary">Save</button>

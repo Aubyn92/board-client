@@ -1,9 +1,7 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { PostsContext } from '../context/posts-context'
 
 class ProtectedRoute extends React.Component {
-  static contextType = PostsContext
   state = {
     auth: false,
     loading: true,
@@ -23,13 +21,6 @@ class ProtectedRoute extends React.Component {
     }
   };
 
-  setTokenAndDispatch = async (response) => {
-    const { jwt, posts, current_user: currentUser } = await response.json();
-    localStorage.setItem("token", jwt);
-    sessionStorage.setItem("auth", true);
-    this.context.dispatch("populate", { posts, currentUser });
-  };
-
   setAuth = () => this.setState({ auth: true, loading: false });
 
   setLoading = () => this.setState({ loading: false });
@@ -38,7 +29,6 @@ class ProtectedRoute extends React.Component {
     try {
       const response = await this.getPosts();
       this.checkStatusCode(response);
-      await this.setTokenAndDispatch(response);
       this.setAuth();
     } catch (err) {
       this.setLoading();
