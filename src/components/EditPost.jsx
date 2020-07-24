@@ -30,12 +30,10 @@ export default class EditPost extends Component {
     if (uploadedImage) {
       const data = new FormData();
       data.append('post[image]', uploadedImage)
-    // await fetch(`http://localhost:3000/posts/${id}`, {
       const response = await fetch(`http://localhost:3000/posts/${id}`, {
       method: "PUT",
       body: data,
       headers: {
-        // "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       }
       })

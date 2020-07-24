@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
@@ -6,14 +6,14 @@ export default class UserProfile extends Component {
   state = { posts: [] };
 
   getPosts = async () => {
-    const response = await fetch("http://localhost:3000/posts", {
+    const response = await fetch("http://localhost:3000/profile", {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 
     const data = await response.json();
-    console.log(data)
+    console.log(data);
     this.setState({ posts: data.posts });
   };
 
@@ -35,6 +35,7 @@ export default class UserProfile extends Component {
             <header className="card-header">
               <p className="card-header-title">{post.title}</p>
             </header>
+
             <div className="card-content">
               <div className="content">
                 <p>Category: {post.tag}</p>
@@ -43,35 +44,34 @@ export default class UserProfile extends Component {
                 <p>{moment(post.created_at).startOf("minute").fromNow()}</p>
                 <div className="card-image">
                   <figure className=" image is-4by3">
-                {post.image && <img  src={post.image} alt={post.title} />}
-                </figure>
+                    {post.image && <img src={post.image} alt={post.title} />}
+                  </figure>
                 </div>
               </div>
             </div>
+
             <div className="edit-delete-container">
               <footer className="card-footer">
-                {this.state.currentUser === post.user_id && (
-                  <React.Fragment>
-                    <Link to={`/posts/${post.id}/edit`}>
-                      <button className="card-foot-item button is-dark">
-                        Edit
-                      </button>
-                    </Link>
-                    <button
-                      className="card-footer-item button is-dark"
-                      onClick={() => this.deletePost(post.id)}
-                    >
-                      Delete
+                <React.Fragment>
+                  <Link to={`/posts/${post.id}/edit`}>
+                    <button className="card-foot-item button is-dark">
+                      Edit
                     </button>
-                  </React.Fragment>
-                )}
+                  </Link>
+                  <button
+                    className="card-footer-item button is-dark"
+                    onClick={() => this.deletePost(post.id)}
+                  >
+                    Delete
+                  </button>
+                </React.Fragment>
+
                 <Link
                   to={{
                     pathname: `/posts/${post.id}`,
                     state: post,
                   }}
-                >
-                </Link>
+                ></Link>
               </footer>
             </div>
             <hr />
@@ -86,8 +86,6 @@ export default class UserProfile extends Component {
   }
 
   render() {
-    console.log(this.context);
     return <div>{this.renderPosts()}</div>;
   }
 }
-

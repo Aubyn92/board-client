@@ -17,15 +17,15 @@ export default class Posts extends Component {
     this.setState({ posts: data.posts });
   };
 
-  deletePost = async (id) => {
-    await fetch(`http://localhost:3000/posts/${id}`, {
-      method: "DELETE",
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
-    this.getPosts();
-  };
+  // deletePost = async (id) => {
+  //   await fetch(`http://localhost:3000/posts/${id}`, {
+  //     method: "DELETE",
+  //     headers: {
+  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
+  //     },
+  //   });
+  //   this.getPosts();
+  // };
 
   renderPosts = () => {
     return this.state.posts.map((post, index) => {
@@ -52,17 +52,17 @@ export default class Posts extends Component {
               <footer className="card-footer">
                 {this.state.currentUser === post.user_id && (
                   <React.Fragment>
-                    <Link to={`/posts/${post.id}/edit`}>
+                    {/* <Link to={`/posts/${post.id}/edit`}>
                       <button className="card-foot-item button is-dark">
                         Edit
                       </button>
-                    </Link>
-                    <button
+                    </Link> */}
+                    {/* <button
                       className="card-footer-item button is-dark"
                       onClick={() => this.deletePost(post.id)}
                     >
                       Delete
-                    </button>
+                    </button> */}
                   </React.Fragment>
                 )}
                 <Link
