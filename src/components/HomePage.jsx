@@ -4,7 +4,7 @@ export default class HomePage extends Component {
   render() {
     return (
       <>
-        <section class="hero is-success is-fullheight">
+        <section class="hero is-fullheight background">
           <div class="hero-body">
             <div class="container">
           
