@@ -44,26 +44,44 @@ export default class SignUp extends Component {
     const { email, password } = this.state;
     return (
       <>
-        <h1>Sign Up</h1>
-        <form onSubmit={this.onFormSubmit}>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            name="email"
-            id="email"
-            value={email}
-            onChange={this.onInputChange}
-          />
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            value={password}
-            onChange={this.onInputChange}
-          />
-          <input type="submit" value="Submit" />
-        </form>
+        <div className="container">
+          <div className="field">
+            <div class="columns is-centered">
+              <div class="column is-half">
+                <h1>Sign Up</h1>
+                <form onSubmit={this.onFormSubmit}>
+                  <label className="label" htmlFor="email">
+                    Email
+                  </label>
+                  <input
+                    className="input"
+                    type="email"
+                    name="email"
+                    id="email"
+                    value={email}
+                    onChange={this.onInputChange}
+                  />
+                  <label className="label" htmlFor="password">
+                    Password
+                  </label>
+                  <input
+                    className="input"
+                    type="password"
+                    name="password"
+                    id="password"
+                    value={password}
+                    onChange={this.onInputChange}
+                  />
+                  <input
+                    className="button is-info"
+                    type="submit"
+                    value="Submit"
+                  />
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </>
     );
   }

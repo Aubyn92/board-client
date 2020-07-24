@@ -7,15 +7,15 @@ export default class EditPost extends Component {
     description: "",
     loading: true,
     id: Number(this.props.match.params.id),
-    image: '',
+    image: "",
   };
 
   onInputChange = (event) => {
     const key = event.target.id;
     if (event.target?.files) {
       this.setState({
-        uploadedImage: event.target.files[0]
-      })
+        uploadedImage: event.target.files[0],
+      });
     } else {
       this.setState({
         [key]: event.target.value,
@@ -23,23 +23,21 @@ export default class EditPost extends Component {
     }
   };
 
-
   onFormSubmit = async (event) => {
     event.preventDefault();
     let { id, title, tag, description, image, uploadedImage } = this.state;
     if (uploadedImage) {
       const data = new FormData();
-      data.append('post[image]', uploadedImage)
+      data.append("post[image]", uploadedImage);
       const response = await fetch(`http://localhost:3000/posts/${id}`, {
-      method: "PUT",
-      body: data,
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      }
-      })
-      image = await response.text()
+        method: "PUT",
+        body: data,
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      });
+      image = await response.text();
     }
-
 
     await fetch(`http://localhost:3000/posts/${id}`, {
       method: "PUT",
@@ -55,10 +53,10 @@ export default class EditPost extends Component {
   async componentDidMount() {
     // const { id } = this.state;
     // const foundPost = this.context.posts.find((post) => {
-      // return post.id === this.state.id
+    // return post.id === this.state.id
     // })
     // this.setState({ ...foundPost, loading: false }); #removed id below
-    const response = await fetch(`http://localhost:3000/posts`, { 
+    const response = await fetch(`http://localhost:3000/posts`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -72,45 +70,65 @@ export default class EditPost extends Component {
     return (
       !loading && (
         <>
-          <h1>Edit a post</h1>
-          <form onSubmit={this.onFormSubmit} encType="multipart/form-data">
-            <label htmlFor="title">Title</label>
-            <input
-              type="text"
-              name="title"
-              id="title"
-              onChange={this.onInputChange}
-              value={title}
-              />
-            <label htmlFor="tag">Tag</label>
-            <input
-              type="text"
-              name="tag"
-              id="tag"
-              onChange={this.onInputChange}
-              value={tag}
-            />
-            <label htmlFor="description">Description</label>
-            <textarea
-              name="description"
-              id="description"
-              onChange={this.onInputChange}
-              value={description}
-            ></textarea>
-            <label htmlFor="image">Image</label>
-            <input
-              type="file"
-              name="image"
-              id="image"
-              onChange={this.onInputChange}
-            />
-            <input type="submit" value="Submit" />
-          </form>
+          <div className="container">
+            <div className="field">
+              <div class="columns is-centered">
+                <div class="column is-half">
+                  <h1>Edit a post</h1>
+                  <form
+                    onSubmit={this.onFormSubmit}
+                    encType="multipart/form-data"
+                  >
+                    <label className="input" htmlFor="title">
+                      Title
+                    </label>
+                    <input
+                      type="text"
+                      name="title"
+                      id="title"
+                      onChange={this.onInputChange}
+                      value={title}
+                    />
+                    <label className="label" htmlFor="tag">
+                      Tag
+                    </label>
+                    <input
+                      type="text"
+                      name="tag"
+                      id="tag"
+                      onChange={this.onInputChange}
+                      value={tag}
+                    />
+                    <label className="label" htmlFor="description">
+                      Description
+                    </label>
+                    <textarea
+                      name="description"
+                      id="description"
+                      onChange={this.onInputChange}
+                      value={description}
+                    ></textarea>
+                    <label className="label" htmlFor="image">
+                      Image
+                    </label>
+                    <input
+                      type="file"
+                      name="image"
+                      id="image"
+                      onChange={this.onInputChange}
+                    />
+                    <input
+                      className="button is-info"
+                      type="submit"
+                      value="Submit"
+                    />{" "}
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
         </>
       )
     );
   }
 }
-
-  
-

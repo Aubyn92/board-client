@@ -32,6 +32,8 @@ export default class Posts extends Component {
       return (
         <div key={index}>
           <div className="card">
+            <div class="columns is-centered">
+            <div class="column is-half">
             <header className="card-header">
               <p className="card-header-title">{post.title}</p>
             </header>
@@ -78,6 +80,8 @@ export default class Posts extends Component {
               </footer>
             </div>
             <hr />
+            </div>
+            </div>
           </div>
         </div>
       );
