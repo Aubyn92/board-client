@@ -15,6 +15,7 @@ import ViewPost from "./components/ViewPost";
 import Comment from "./components/Comment";
 import CommentBox from "./components/CommentBox";
 import CommentForm from "./components/CommentForm";
+import styles from "./src/styles/main.scss";
 
 class App extends React.Component {
   state = { posts: [] };
