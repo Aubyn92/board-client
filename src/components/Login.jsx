@@ -77,7 +77,7 @@ export default class Login extends Component {
                   />
                 </div>
                 <input
-                  className="button is-info"
+                  className="button btn-color"
                   type="submit"
                   value="Submit"
                 />

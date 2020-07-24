@@ -8,7 +8,7 @@ const NavBar = () => {
   if (localStorage.getItem("token") != null) {
     return (
       <div class="display is-flex-mobile">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav class="navbar background-color" role="navigation" aria-label="main navigation">
           <div class="navbar-start">
             <a class="navbar-item">
               <Link to="/">BOARD</Link>
@@ -51,7 +51,7 @@ const NavBar = () => {
   } else {
     return (
       <div class="display is-flex-mobile">
-        <nav class="navbar" role="navigation" aria-label="main navigation">
+        <nav class="navbar background-color" role="navigation" aria-label="main navigation">
           <div class="navbar-start">
             <a class="navbar-item">
               <Link to="/">BOARD</Link>

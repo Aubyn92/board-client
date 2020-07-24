@@ -118,7 +118,7 @@ export default class EditPost extends Component {
                       onChange={this.onInputChange}
                     />
                     <input
-                      className="button is-info"
+                      className="button btn-color"
                       type="submit"
                       value="Submit"
                     />{" "}
