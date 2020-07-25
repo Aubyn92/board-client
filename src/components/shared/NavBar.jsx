@@ -7,16 +7,17 @@ const NavBar = () => {
   console.log(localStorage.getItem("token"));
   if (localStorage.getItem("token") != null) {
     return (
-      <div class="display is-flex-mobile">
-        <nav class="navbar background-color" role="navigation" aria-label="main navigation">
-          <div class="navbar-start">
-            <a class="navbar-item">
+      <div className="display is-flex-mobile">
+        <nav className="navbar background-color">
+        <nav className="navbar background-color" role="navigation" aria-label="main navigation">
+          <div className="navbar-start">
+            <a href className="navbar-item">
               <Link to="/">BOARD</Link>
             </a>
           </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <nav class="breadcrumb" aria-label="breadcrumbs">
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <nav className="breadcrumb" aria-label="breadcrumbs">
                 <ul>
                   <li>
                     {" "}
@@ -28,7 +29,7 @@ const NavBar = () => {
                   </li>
                   <li>
                     {" "}
-                    <Link to="/profile">User Profile</Link>{" "}
+                    <Link to="/profile">Profile</Link>{" "}
                   </li>
                   <li>
                     {" "}
@@ -46,20 +47,21 @@ const NavBar = () => {
             </div>
           </div>
         </nav>
+        </nav>
       </div>
     );
   } else {
     return (
-      <div class="display is-flex-mobile">
-        <nav class="navbar background-color" role="navigation" aria-label="main navigation">
-          <div class="navbar-start">
-            <a class="navbar-item">
+      <div className="display is-flex-mobile">
+        <nav className="navbar background-color" role="navigation" aria-label="main navigation">
+          <div className="navbar-start">
+            <a href className="navbar-item">
               <Link to="/">BOARD</Link>
             </a>
           </div>
-          <div class="navbar-end">
-            <div class="navbar-item">
-              <nav class="breadcrumb" aria-label="breadcrumbs">
+          <div className="navbar-end">
+            <div className="navbar-item">
+              <nav className="breadcrumb" aria-label="breadcrumbs">
                 <ul>
                   <li>
                     <li>

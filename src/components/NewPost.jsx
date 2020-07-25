@@ -36,8 +36,8 @@ export default class NewPost extends Component {
       <>
         <div className="container">
           <div className="field">
-            <div class="columns is-centered">
-              <div class="column is-half">
+            <div className="columns is-centered">
+              <div className="column is-half">
                 <h1>Create a post</h1>
                 <form
                   onSubmit={this.onFormSubmit}

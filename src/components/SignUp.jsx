@@ -43,46 +43,59 @@ export default class SignUp extends Component {
   render() {
     const { email, password } = this.state;
     return (
-      <>
-        <div className="container">
-          <div className="field">
-            <div class="columns is-centered">
-              <div class="column is-half">
-                <h1>Sign Up</h1>
+      <div className="container">
+        <div className="columns is-centered">
+          <div className="column is-5">
+            <div className="box">
+              <div>
+                  <h1 className="title has-text-centered">Sign Up</h1>
+                </div>
                 <form onSubmit={this.onFormSubmit}>
+                <div className="field">
                   <label className="label" htmlFor="email">
                     Email
                   </label>
-                  <input
-                    className="input"
-                    type="email"
-                    name="email"
-                    id="email"
-                    value={email}
-                    onChange={this.onInputChange}
-                  />
+                  <div className="control has-icons-left">
+                    <input
+                      className="input"
+                      type="email"
+                      name="email"
+                      id="email"
+                      value={email}
+                      data-testid="email"
+                      onChange={this.onInputChange}
+                    />
+                  </div>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                  </span>
+                </div>
+                <div className="field">
                   <label className="label" htmlFor="password">
                     Password
                   </label>
-                  <input
-                    className="input"
-                    type="password"
-                    name="password"
-                    id="password"
-                    value={password}
-                    onChange={this.onInputChange}
-                  />
-                  <input
-                    className="button btn-color"
-                    type="submit"
-                    value="Submit"
-                  />
-                </form>
-              </div>
+                  <div className="control has-icons-left">
+                    <input
+                      className="input"
+                      type="password"
+                      name="password"
+                      id="password"
+                      value={password}
+                      data-testid="password"
+                      onChange={this.onInputChange}
+                    />
+                  </div>
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                  </span>
+                </div>
+                <div className="buttons"></div>
+                <input className="button is-link" type="submit" value="Sign Up" />
+              </form>
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }

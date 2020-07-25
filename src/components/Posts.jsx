@@ -6,83 +6,86 @@ export default class Posts extends Component {
   state = { posts: [] };
 
   getPosts = async () => {
-    const response = await fetch("http://localhost:3000/posts", {
-      // headers: {
-      //   Authorization: `Bearer ${localStorage.getItem("token")}`,
-      // },
-    });
+    const response = await fetch("http://localhost:3000/posts", {});
 
     const data = await response.json();
-    console.log(data)
+    console.log(data);
     this.setState({ posts: data.posts });
   };
-
-  // deletePost = async (id) => {
-  //   await fetch(`http://localhost:3000/posts/${id}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       Authorization: `Bearer ${localStorage.getItem("token")}`,
-  //     },
-  //   });
-  //   this.getPosts();
-  // };
 
   renderPosts = () => {
     return this.state.posts.map((post, index) => {
       return (
         <div key={index}>
-          <div className="card">
-            <div class="columns is-centered">
-            <div class="column is-half">
-            <header className="card-header">
-              <p className="card-header-title">{post.title}</p>
-            </header>
-            <div className="card-content">
-              <div className="content">
-                <p>Category: {post.tag}</p>
+          <article className="media">
+            <figure className="media-left">
+              <p className="image is-64x64">
+                {post.image && <img src={post.image} alt={post.title} />}
+              </p>
+            </figure>
 
-                <p>{post.description}</p>
-                <p>{moment(post.created_at).startOf("minute").fromNow()}</p>
-                <div className="card-image">
-                  <figure className= "image is-128x128px">
-                {post.image && <img  src={post.image} alt={post.title} />}
-                </figure>
-                </div>
-              </div>
-            </div>
-            <div className="edit-delete-container">
-              <footer className="card-footer">
-                {this.state.currentUser === post.user_id && (
-                  <React.Fragment>
-                    {/* <Link to={`/posts/${post.id}/edit`}>
-                      <button className="card-foot-item button is-dark">
-                        Edit
-                      </button>
-                    </Link> */}
-                    {/* <button
-                      className="card-footer-item button is-dark"
-                      onClick={() => this.deletePost(post.id)}
-                    >
-                      Delete
-                    </button> */}
-                  </React.Fragment>
-                )}
+            <div className="media-content">
+              <div className="content">
+                <p>
+                  {" "}
+                  <strong>{post.title}</strong> <small>{post.tag}</small>{" "}
+                  <small>
+                    {moment(post.created_at).startOf("minute").fromNow()}
+                  </small>
+                  <br />
+                  {post.description}
+                </p>
                 <Link
                   to={{
                     pathname: `/posts/${post.id}`,
                     state: post,
                   }}
                 >
-                  <button className="card-footer-item button is-dark">
-                    Show
+                  <button className="button is-small is-link is-light">
+                    View
                   </button>
                 </Link>
-              </footer>
+              </div>
+              <nav className="level is-mobile">
+                <div className="level-left">
+                  <a href className="level-item">
+                    <span className="icon is-small">
+                      <i className="fas fa-reply"></i>
+                    </span>
+                  </a>
+                  <a href className="level-item">
+                    <span className="icon is-small">
+                      <i className="fas fa-retweet"></i>
+                    </span>
+                  </a>
+                  <a href className="level-item">
+                    <span className="icon is-small">
+                      <i className="fas fa-heart"></i>
+                    </span>
+                  </a>
+                </div>
+              </nav>
+              <div className="field">
+                <p className="control">
+                  <textarea
+                    class="textarea is-one-third-desktop"
+                    placeholder="Add a comment..."
+                  ></textarea>
+                </p>
+              </div>
+              <nav className="level">
+                <div className="level-left">
+                  <div className="level-item">
+                    <a href className="button is-info is-small">
+                      Submit
+                    </a>
+                  </div>
+                </div>
+              </nav>
             </div>
-            <hr />
-            </div>
-            </div>
-          </div>
+          </article>
+
+          <hr />
         </div>
       );
     });
@@ -93,8 +96,7 @@ export default class Posts extends Component {
   }
 
   render() {
-    console.log(this.context);
-    // this.context.dispatch();
+    // console.log(this.context);
     return <div>{this.renderPosts()}</div>;
   }
 }
