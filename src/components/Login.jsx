@@ -62,12 +62,13 @@ export default class Login extends Component {
                       id="email"
                       value={email}
                       data-testid="email"
+                      placeholder="Email"
                       onChange={this.onInputChange}
                     />
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
                   </div>
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                  </span>
                 </div>
                 <div className="field">
                   <label className="label" htmlFor="password">
@@ -81,12 +82,13 @@ export default class Login extends Component {
                       id="password"
                       value={password}
                       data-testid="password"
+                      placeholder="Password"
                       onChange={this.onInputChange}
                     />
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                    </span>
                   </div>
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
-                  </span>
                 </div>
                 <div className="buttons"></div>
                 <input className="button is-link" type="submit" value="Login" />

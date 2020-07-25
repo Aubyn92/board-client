@@ -48,9 +48,9 @@ export default class SignUp extends Component {
           <div className="column is-5">
             <div className="box">
               <div>
-                  <h1 className="title has-text-centered">Sign Up</h1>
-                </div>
-                <form onSubmit={this.onFormSubmit}>
+                <h1 className="title has-text-centered">Sign Up</h1>
+              </div>
+              <form onSubmit={this.onFormSubmit}>
                 <div className="field">
                   <label className="label" htmlFor="email">
                     Email
@@ -63,12 +63,13 @@ export default class SignUp extends Component {
                       id="email"
                       value={email}
                       data-testid="email"
+                      placeholder="Email"
                       onChange={this.onInputChange}
                     />
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
                   </div>
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-user"></i>
-                  </span>
                 </div>
                 <div className="field">
                   <label className="label" htmlFor="password">
@@ -82,15 +83,20 @@ export default class SignUp extends Component {
                       id="password"
                       value={password}
                       data-testid="password"
+                      placeholder="Password"
                       onChange={this.onInputChange}
                     />
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-lock"></i>
+                    </span>
                   </div>
-                  <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
-                  </span>
                 </div>
                 <div className="buttons"></div>
-                <input className="button is-link" type="submit" value="Sign Up" />
+                <input
+                  className="button is-link"
+                  type="submit"
+                  value="Sign Up"
+                />
               </form>
             </div>
           </div>
