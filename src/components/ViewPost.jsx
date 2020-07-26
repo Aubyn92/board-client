@@ -27,25 +27,77 @@ export default class ViewPost extends Component {
     }
     return (
       post && (
-        <div>
-          <h1>Title: {post.title}</h1>
-          <p>Category: {post.tag}</p>
-          <p>Description: {post.description}</p>
-          <p>{moment(post.created_at).startOf("minute").fromNow()}</p>
-          {post.image && <img src={post.image} alt={post.title} />}
-          <button onClick={this.props.history.goBack}>Back</button>
-          <form action="/posts/{{post_id}}/comments" method="post">
+        <div class="container is-centered">
+          <div class="columns is-mobile is-centered">
+            <div class="column is-10">
+              {/* <div class="box"> */}
+              <article className="media">
+                <div className="media-left">
+                  <figure className="image is-128x128">
+                    {post.image && <img src={post.image} alt={post.title} />}
+                  </figure>
+                </div>
+
+                <div class="column is-10">
+                  <div className="media-content">
+                    <div className="content column is-10">
+                      <p>
+                        {" "}
+                        <strong>{post.title}</strong>{" "}
+                        <small>
+                          {moment(post.created_at).startOf("minute").fromNow()}
+                        </small>{" "}
+                        <br />
+                        <small>Category: {post.tag}</small>
+                        <br />
+                        {post.description}
+                      </p>
+                    </div>
+                    <div class="column is-10">
+                      <button
+                        className="button is-small is-link is-light is-info"
+                        onClick={this.props.history.goBack}
+                      >
+                        Back
+                      </button>
+                    </div>
+                  </div>
+                  <div class="column is-10">
+                    <div className="field">
+                      <div className="control">
+                        <textarea
+                          class="textarea has-fixed-size"
+                          placeholder="Add a comment..."
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="column is-10">
+                    <nav className="level">
+                      <div className="level-left">
+                        <div className="level-item">
+                          <a href className="button is-info is-small">
+                            Submit
+                          </a>
+                        </div>
+                      </div>
+                    </nav>
+                  </div>
+                </div>
+
+                {/* <form action="/posts/{{post_id}}/comments" method="post">
           <textarea class='form-control' name="content" placeholder="Comment"></textarea>
           <div class="text-right">
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="submit" class="btn btn-primary">Save</button> */}
+              </article>
+              <hr />
+            </div>
           </div>
-          </form>
         </div>
       )
     );
   }
 }
 
-
-// above code is for a form in the show area of viewing a post, so that the user can write a 
+// above code is for a form in the show area of viewing a post, so that the user can write a
 // comment if they're viewing this post.

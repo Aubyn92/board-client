@@ -31,50 +31,60 @@ export default class UserProfile extends Component {
     return this.state.posts.map((post, index) => {
       return (
         <div key={index}>
-          <div className="card">
-            <header className="card-header">
-              <p className="card-header-title">{post.title}</p>
-            </header>
+          <div class="container is-centered">
+            <div class="columns is-mobile is-centered">
+              <div class="column is-10">
+                {/* <div class="box"> */}
+                <article className="media">
+                  <div className="media-left">
+                    <figure className="image is-128x128">
+                      {post.image && <img src={post.image} alt={post.title} />}
+                    </figure>
+                  </div>
+                  <div class="column is-10">
+                    <div className="media-content">
+                      <div className="content column is-10">
+                        <p>
+                          {" "}
+                          <strong>{post.title}</strong>{" "}
+                          <small>
+                            {moment(post.created_at)
+                              .startOf("minute")
+                              .fromNow()}
+                          </small>{" "}
+                          <br />
+                          <small>Category: {post.tag}</small>
+                          <br />
+                          {post.description}
+                        </p>
+                      </div>
 
-            <div className="card-content">
-              <div className="content">
-                <p>Category: {post.tag}</p>
-
-                <p>{post.description}</p>
-                <p>{moment(post.created_at).startOf("minute").fromNow()}</p>
-                <div className="card-image">
-                  <figure className=" image is-4by3">
-                    {post.image && <img src={post.image} alt={post.title} />}
-                  </figure>
-                </div>
+                      <div class="column is-10">
+                        <Link
+                          to={{
+                            pathname: `/posts/${post.id}`,
+                            state: post,
+                          }}
+                        ></Link>
+                        <React.Fragment>
+                          <Link to={`/posts/${post.id}/edit`}>
+                            <button className="button is-small is-link is-info is-light is-outlined">
+                              Edit
+                            </button>
+                          </Link>{" "}
+                          <button
+                            className="button is-small is-link is-danger is-light is-outlined"
+                            onClick={() => this.deletePost(post.id)}
+                          >
+                            Delete
+                          </button>
+                        </React.Fragment>
+                      </div>
+                    </div>
+                  </div>
+                </article>
               </div>
             </div>
-
-            <div className="edit-delete-container">
-              <footer className="card-footer">
-                <React.Fragment>
-                  <Link to={`/posts/${post.id}/edit`}>
-                    <button className="card-foot-item button is-dark">
-                      Edit
-                    </button>
-                  </Link>
-                  <button
-                    className="card-footer-item button is-dark"
-                    onClick={() => this.deletePost(post.id)}
-                  >
-                    Delete
-                  </button>
-                </React.Fragment>
-
-                <Link
-                  to={{
-                    pathname: `/posts/${post.id}`,
-                    state: post,
-                  }}
-                ></Link>
-              </footer>
-            </div>
-            <hr />
           </div>
         </div>
       );

@@ -69,65 +69,88 @@ export default class EditPost extends Component {
     const { title, tag, description, loading } = this.state;
     return (
       !loading && (
-        <>
-          <div className="container">
-            <div className="field">
-              <div class="columns is-centered">
-                <div class="column is-half">
-                  <h1>Edit a post</h1>
+        <div className="container">
+          <div className="columns is-centered">
+            <div className="column is-5">
+              <div className="box">
+                <div>
+                  <h1 className="title has-text-centered">Edit a post</h1>
                   <form
                     onSubmit={this.onFormSubmit}
                     encType="multipart/form-data"
                   >
-                    <label className="input" htmlFor="title">
-                      Title
-                    </label>
-                    <input
-                      type="text"
-                      name="title"
-                      id="title"
-                      onChange={this.onInputChange}
-                      value={title}
-                    />
-                    <label className="label" htmlFor="tag">
-                      Tag
-                    </label>
-                    <input
-                      type="text"
-                      name="tag"
-                      id="tag"
-                      onChange={this.onInputChange}
-                      value={tag}
-                    />
+                    <div className="field">
+                      <label className="label" htmlFor="title">
+                        Title
+                      </label>
+                      <div className="control has-icons-left">
+                        <input
+                          className="input"
+                          type="text"
+                          name="title"
+                          id="title"
+                          placeholder="Title"
+                          onChange={this.onInputChange}
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-user"></i>
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="field">
+                      <label className="label" htmlFor="tag">
+                        Category
+                      </label>
+                      <div className="control has-icons-left">
+                        <input
+                          className="input"
+                          type="text"
+                          name="tag"
+                          id="tag"
+                          placeholder="Category"
+                          onChange={this.onInputChange}
+                        />
+                        <span class="icon is-small is-left">
+                          <i class="fas fa-tag"></i>
+                        </span>
+                      </div>
+                    </div>
+
                     <label className="label" htmlFor="description">
                       Description
                     </label>
                     <textarea
+                      class="textarea"
                       name="description"
                       id="description"
                       onChange={this.onInputChange}
-                      value={description}
                     ></textarea>
-                    <label className="label" htmlFor="image">
-                      Image
-                    </label>
+
+                    <div className="field">
+                      <label className="label" htmlFor="image">
+                        Image
+                      </label>
+                      <input
+                        className="button is-info is-light"
+                        type="file"
+                        name="image"
+                        id="image"
+                        onChange={this.onInputChange}
+                      />
+                    </div>
+                    <div className="buttons"></div>
                     <input
-                      type="file"
-                      name="image"
-                      id="image"
-                      onChange={this.onInputChange}
-                    />
-                    <input
-                      className="button btn-color"
+                      className="button is-link"
                       type="submit"
-                      value="Submit"
-                    />{" "}
+                      value="Update Post"
+                    />
                   </form>
                 </div>
               </div>
             </div>
           </div>
-        </>
+        </div>
       )
     );
   }
