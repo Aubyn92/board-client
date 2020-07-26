@@ -3,7 +3,14 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 export default class Posts extends Component {
-  state = { posts: [] };
+  state = { posts: [], count: 0 };
+  
+  incrementMe = () => {
+    let newCount = this.state.count + 1;
+    this.setState({
+      count: newCount,
+    });
+  };
 
   getPosts = async () => {
     const response = await fetch("http://localhost:3000/posts", {});
@@ -17,21 +24,23 @@ export default class Posts extends Component {
     return this.state.posts.map((post, index) => {
       return (
         <div key={index}>
-          <div class="container is-centered">
-            <div class="columns is-mobile is-centered">
-              <div class="column is-10">
+          <div className="container is-centered">
+            <div className="columns is-mobile is-centered">
+              <div className="column is-10">
                 <article className="media">
                   <div className="media-left">
                     <figure className="image is-128x128">
                       {post.image && <img src={post.image} alt={post.title} />}
                     </figure>
                   </div>
-                  <div class="column is-10">
+                  <div className="column is-10">
                     <div className="media-content">
                       <div className="content column is-10">
                         <p>
                           {" "}
-                          <strong className="brighten">{post.title}</strong>{" "}
+                          <strong className="brighten">
+                            {post.title}
+                          </strong>{" "}
                           <small className="robo">
                             {moment(post.created_at)
                               .startOf("minute")
@@ -43,61 +52,68 @@ export default class Posts extends Component {
                           {post.description}
                         </p>
                       </div>
-                      <div class="column is-10">
-                        <Link
-                          to={{
-                            pathname: `/posts/${post.id}`,
-                            state: post,
-                          }}
-                        >
-                          <button className="button is-small is-link is-light">
-                            View
-                          </button>
-                        </Link>
-                      </div>
                     </div>
-                    <div class="column is-10">
+                    <div className="column is-10">
                       <nav className="level is-mobile">
                         <div className="level-left">
-                          <a href className="level-item">
+                          {/* <Link to className="level-item">
                             <span className="icon is-small">
-                              <i className="fas fa-reply"></i>
+                            <i className="fas fa-reply"></i>
                             </span>
-                          </a>
-                          <a href className="level-item">
+                            </Link>
+                            <Link to className="level-item">
                             <span className="icon is-small">
-                              <i className="fas fa-retweet"></i>
+                            <i className="fas fa-retweet"></i>
                             </span>
-                          </a>
-                          <a href className="level-item">
+                          </Link> */}
+                          {/* <Link to className="level-item">
                             <span className="icon is-small">
-                              <i className="fas fa-heart"></i>
+                            <i
+                          className="fas fa-heart"> */}
+                          {/* onClick={this.incrementMe}
+                              >
+                            {this.state.count} */}
+                          {/* </i>
                             </span>
-                          </a>
+                          </Link> */}
+                          <Link to className="level-item">
+                            <button className="button is-small is-light is-link is-outlined" onClick={this.incrementMe}> 💙  Likes: {this.state.count}
+                            </button>
+                          </Link>
+                          <div className="column is-10">
+                            <Link
+                              to={{
+                                pathname: `/posts/${post.id}`,
+                                state: post,
+                              }}
+                            >
+                              <button className="button is-small is-link is-light is-outlined">
+                                View
+                              </button>
+                            </Link>
+                          </div>
                         </div>
                       </nav>
                     </div>
 
-
-                    <div class="column is-10">
+                    <div className="column is-10">
                       <div className="field">
                         <div className="control">
                           <textarea
-                            class="textarea has-fixed-size"
+                            className="textarea has-fixed-size"
                             placeholder="Add a comment..."
                           ></textarea>
                         </div>
                       </div>
                     </div>
 
-
-                    <div class="column is-10">
+                    <div className="column is-10">
                       <nav className="level">
                         <div className="level-left">
                           <div className="level-item">
-                            <a href className="button is-info is-small">
+                            <Link to className="button is-info is-small">
                               Submit
-                            </a>
+                            </Link>
                           </div>
                         </div>
                       </nav>

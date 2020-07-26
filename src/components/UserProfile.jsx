@@ -45,7 +45,9 @@ export default class UserProfile extends Component {
                       <div className="content column is-10">
                         <p>
                           {" "}
-                          <strong className="brighten">{post.title}</strong>{" "}
+                          <strong className="brighten">
+                            {post.title}
+                          </strong>{" "}
                           <small className="robo">
                             {moment(post.created_at)
                               .startOf("minute")

@@ -48,14 +48,14 @@ export default class ViewPost extends Component {
                           {moment(post.created_at).startOf("minute").fromNow()}
                         </small>{" "}
                         <br />
-                        <small>Category: {post.tag}</small>
+                        <small className="cato">Category: {post.tag}</small>
                         <br />
                         {post.description}
                       </p>
                     </div>
                     <div class="column is-10">
                       <button
-                        className="button is-small is-link is-light is-info"
+                        className="button is-small is-link is-light is-info is-outlined"
                         onClick={this.props.history.goBack}
                       >
                         Back
