@@ -33,65 +33,81 @@ export default class NewPost extends Component {
 
   render() {
     return (
-      <>
-        <div className="container">
-          <div className="field">
-            <div className="columns is-centered">
-              <div className="column is-half">
-                <h1>Create a post</h1>
-                <form
-                  onSubmit={this.onFormSubmit}
-                  encType="multipart/form-data"
-                >
+      <div className="container">
+        <div className="columns is-centered">
+          <div className="column is-5">
+            <div className="box">
+              <div>
+                <h1 className="title has-text-centered">Create a post</h1>
+              </div>
+              <form onSubmit={this.onFormSubmit} encType="multipart/form-data">
+                <div className="field">
                   <label className="label" htmlFor="title">
                     Title
                   </label>
-                  <input
-                    className="input"
-                    type="text"
-                    name="title"
-                    id="title"
-                    onChange={this.onInputChange}
-                  />
-                  <label className="label" htmlFor="tag">
-                    Tag
-                  </label>
-                  <input
-                    className="input"
-                    type="text"
-                    name="tag"
-                    id="tag"
-                    onChange={this.onInputChange}
-                  />
+                  <div className="control has-icons-left">
+                    <input
+                      className="input"
+                      type="text"
+                      name="title"
+                      id="title"
+                      placeholder="Title"
+                      onChange={this.onInputChange}
+                    />
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                  </div>
+                </div>
 
-                  <label className="label" htmlFor="description">
-                    Description
+                <div className="field">
+                  <label className="label" htmlFor="tag">
+                    Category
                   </label>
-                  <textarea
-                    name="description"
-                    id="description"
-                    onChange={this.onInputChange}
-                  ></textarea>
+                  <div className="control has-icons-left">
+                    <input
+                      className="input"
+                      type="text"
+                      name="tag"
+                      id="tag"
+                      placeholder="Category"
+                      onChange={this.onInputChange}
+                    />
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-tag"></i>
+                    </span>
+                  </div>
+                </div>
+
+                <label className="label" htmlFor="description">
+                  Description
+                </label>
+                <textarea class="textarea"
+                  name="description"
+                  id="description"
+                  onChange={this.onInputChange}
+                ></textarea>
+
+                <div className="field">
                   <label className="label" htmlFor="image">
                     Image
                   </label>
-                  <input className="button is-info"
+                  <input
+                    className="button is-info is-light"
                     type="file"
                     name="image"
                     id="image"
                     onChange={this.onInputChange}
                   />
-                  <input
-                    className="button btn-color"
-                    type="submit"
-                    value="Submit"
-                  />
-                </form>
-              </div>
+                </div>
+
+                <div className="buttons"></div>
+                <input className="button is-link" type="submit" value="Post" />
+              </form>
             </div>
           </div>
         </div>
-      </>
+      </div>
     );
   }
 }
