@@ -20,7 +20,6 @@ export default class Posts extends Component {
           <div class="container is-centered">
             <div class="columns is-mobile is-centered">
               <div class="column is-10">
-                {/* <div class="box"> */}
                 <article className="media">
                   <div className="media-left">
                     <figure className="image is-128x128">
@@ -32,14 +31,14 @@ export default class Posts extends Component {
                       <div className="content column is-10">
                         <p>
                           {" "}
-                          <strong>{post.title}</strong>{" "}
-                          <small>
+                          <strong className="brighten">{post.title}</strong>{" "}
+                          <small className="robo">
                             {moment(post.created_at)
                               .startOf("minute")
                               .fromNow()}
                           </small>{" "}
                           <br />
-                          <small>Category: {post.tag}</small>
+                          <small className="cato">Category: {post.tag}</small>
                           <br />
                           {post.description}
                         </p>

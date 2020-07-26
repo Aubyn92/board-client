@@ -28,7 +28,7 @@ const NavBar = () => {
                   </li>
                   <li>
                     {" "}
-                    <Link to="/profile">User Profile</Link>{" "}
+                    <Link to="/profile">Profile</Link>{" "}
                   </li>
                   <li>
                     {" "}

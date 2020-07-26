@@ -43,8 +43,8 @@ export default class ViewPost extends Component {
                     <div className="content column is-10">
                       <p>
                         {" "}
-                        <strong>{post.title}</strong>{" "}
-                        <small>
+                        <strong className="brighten">{post.title}</strong>{" "}
+                        <small className="robo">
                           {moment(post.created_at).startOf("minute").fromNow()}
                         </small>{" "}
                         <br />
@@ -99,5 +99,3 @@ export default class ViewPost extends Component {
   }
 }
 
-// above code is for a form in the show area of viewing a post, so that the user can write a
-// comment if they're viewing this post.

@@ -34,7 +34,6 @@ export default class UserProfile extends Component {
           <div class="container is-centered">
             <div class="columns is-mobile is-centered">
               <div class="column is-10">
-                {/* <div class="box"> */}
                 <article className="media">
                   <div className="media-left">
                     <figure className="image is-128x128">
@@ -46,8 +45,8 @@ export default class UserProfile extends Component {
                       <div className="content column is-10">
                         <p>
                           {" "}
-                          <strong>{post.title}</strong>{" "}
-                          <small>
+                          <strong className="brighten">{post.title}</strong>{" "}
+                          <small className="robo">
                             {moment(post.created_at)
                               .startOf("minute")
                               .fromNow()}
@@ -68,12 +67,12 @@ export default class UserProfile extends Component {
                         ></Link>
                         <React.Fragment>
                           <Link to={`/posts/${post.id}/edit`}>
-                            <button className="button is-small is-link is-info is-light is-outlined">
+                            <button className="button is-small is-link is-info is-light">
                               Edit
                             </button>
                           </Link>{" "}
                           <button
-                            className="button is-small is-link is-danger is-light is-outlined"
+                            className="button is-small is-link is-danger is-light"
                             onClick={() => this.deletePost(post.id)}
                           >
                             Delete
