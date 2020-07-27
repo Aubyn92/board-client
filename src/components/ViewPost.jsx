@@ -9,7 +9,7 @@ export default class ViewPost extends Component {
   async componentDidMount() {
     const id = this.props.match.params.id;
     try {
-      const anotherResponse = await fetch(`http://localhost:3000/posts/${id}`);
+      const anotherResponse = await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts/${id}`);
       if (anotherResponse.status >= 400) {
         throw "error";
       }
@@ -29,7 +29,7 @@ export default class ViewPost extends Component {
     });
 
     let like = this.state.count + 1;
-    await fetch(`http://localhost:3000/posts/${id}`, {
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

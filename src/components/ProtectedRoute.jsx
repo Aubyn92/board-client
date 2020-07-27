@@ -8,7 +8,7 @@ class ProtectedRoute extends React.Component {
   };
 
   getPosts = async () => {
-    return await fetch(`http://localhost:3000/posts`, {
+    return await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

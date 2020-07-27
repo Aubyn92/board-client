@@ -29,7 +29,7 @@ export default class EditPost extends Component {
     if (uploadedImage) {
       const data = new FormData();
       data.append("post[image]", uploadedImage);
-      const response = await fetch(`http://localhost:3000/posts/${id}`, {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts/${id}`, {
         method: "PUT",
         body: data,
         headers: {
@@ -39,7 +39,7 @@ export default class EditPost extends Component {
       image = await response.text();
     }
 
-    await fetch(`http://localhost:3000/posts/${id}`, {
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -56,7 +56,7 @@ export default class EditPost extends Component {
     // return post.id === this.state.id
     // })
     // this.setState({ ...foundPost, loading: false }); #removed id below
-    const response = await fetch(`http://localhost:3000/posts`, {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },

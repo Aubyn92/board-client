@@ -14,7 +14,7 @@ export default class SignUp extends Component {
     event.preventDefault();
     const { email, password } = this.state;
     try {
-      const response = await fetch("http://localhost:3000/sign-up", {
+      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/sign-up`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -24,7 +24,7 @@ export default class SignUp extends Component {
       if (response.status >= 400) {
         throw new Error("incorrect credentials");
       } else {
-        const response = await fetch("http://localhost:3000/login", {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

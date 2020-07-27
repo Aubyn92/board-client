@@ -6,7 +6,7 @@ export default class UserProfile extends Component {
   state = { posts: [] };
 
   getPosts = async () => {
-    const response = await fetch("http://localhost:3000/profile", {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -18,7 +18,7 @@ export default class UserProfile extends Component {
   };
 
   deletePost = async (id) => {
-    await fetch(`http://localhost:3000/posts/${id}`, {
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,

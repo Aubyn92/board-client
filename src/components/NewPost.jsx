@@ -20,7 +20,7 @@ export default class NewPost extends Component {
     for (let key in this.state) {
       data.append(`post[${key}]`, this.state[key]);
     }
-    const response = await fetch("http://localhost:3000/posts", {
+    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts`, {
       method: "POST",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
