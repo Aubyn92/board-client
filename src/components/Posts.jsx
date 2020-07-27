@@ -3,33 +3,7 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 export default class Posts extends Component {
-  state = { posts: [], count: 0 };
-  
-  // incrementMe = () => {
-  //   let newCount = this.state.count + 1;
-  //   this.setState({
-  //     count: newCount,
-  //   });
-
-
-  incrementMe = async(id) => {
-    let like = this.state.count + 1;
-    const response = await fetch(`http://localhost:3000/posts/${id}`, {
-      method: "PUT",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-      body:  JSON.stringify({"post": {"like": like}})
-    });
-    console.log(this.state.count)
-    this.setState((state)=> {
-      return {
-        count: state.count + 1
-      }
-    })
-  }
-
+  state = { posts: [] };
 
   getPosts = async () => {
     const response = await fetch("http://localhost:3000/posts", {});
@@ -49,6 +23,7 @@ export default class Posts extends Component {
                 <article className="media">
                   <div className="media-left">
                     <figure className="image is-128x128">
+                      <p>Likes: {post.like}</p>
                       {post.image && <img src={post.image} alt={post.title} />}
                     </figure>
                   </div>
@@ -76,8 +51,8 @@ export default class Posts extends Component {
                       <nav className="level is-mobile">
                         <div className="level-left">
                           <Link to className="level-item">
-                            <button className="button is-small is-light is-link is-outlined" onClick={() => this.incrementMe(post.id)}> 💙  Likes: {this.state.count}
-                            </button>
+                            {/* <button className="button is-small is-light is-link is-outlined" onClick={() => this.incrementMe(post.id)}> 💙  Likes: {this.state.count}
+                            </button> */}
                           </Link>
                           <div className="column is-10">
                             <Link

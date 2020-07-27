@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import NoMatch from "./NoMatch";
+import { Link } from "react-router-dom";
 import moment from "moment";
 
 export default class ViewPost extends Component {
-  state = { post: null, error: false };
+  state = { post: null, error: false, count: 0 };
+
   async componentDidMount() {
     const id = this.props.match.params.id;
     try {
@@ -13,10 +15,28 @@ export default class ViewPost extends Component {
       }
       const post = await anotherResponse.json();
       console.log(post);
-      this.setState({ post: post });
+      this.setState({ post: post, count: post.like });
     } catch (error) {
       this.setState({ error: true });
     }
+  }
+
+  incrementMe = async() => {
+    const id = this.props.match.params.id;
+    let newCount = this.state.count + 1
+    this.setState({
+      count: newCount
+    })
+
+    let like = this.state.count + 1;
+    await fetch(`http://localhost:3000/posts/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
+      },
+      body:  JSON.stringify({"post": {"like": like}})
+    });
   }
 
   render() {
@@ -54,6 +74,16 @@ export default class ViewPost extends Component {
                       </p>
                     </div>
                     <div class="column is-10">
+                    <div className="column is-10">
+                      <nav className="level is-mobile">
+                        <div className="level-left">
+                          <Link to className="level-item">
+                            <button className="button is-small is-light is-link is-outlined" onClick={this.incrementMe}> 💙  Likes: {this.state.count}
+                            </button>
+                          </Link>
+                          </div>
+                          </nav>
+                          </div>
                       <button
                         className="button is-small is-link is-light is-info is-outlined"
                         onClick={this.props.history.goBack}
@@ -84,11 +114,6 @@ export default class ViewPost extends Component {
                     </nav>
                   </div>
                 </div>
-
-                {/* <form action="/posts/{{post_id}}/comments" method="post">
-          <textarea class='form-control' name="content" placeholder="Comment"></textarea>
-          <div class="text-right">
-          <button type="submit" class="btn btn-primary">Save</button> */}
               </article>
               <hr />
             </div>
