@@ -93,7 +93,6 @@ export default class NewPost extends Component {
                     Image
                   </label>
                   <input
-                    className="button is-info is-light"
                     type="file"
                     name="image"
                     id="image"

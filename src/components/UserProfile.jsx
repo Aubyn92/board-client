@@ -54,7 +54,7 @@ export default class UserProfile extends Component {
                               .fromNow()}
                           </small>{" "}
                           <br />
-                          <small>Category: {post.tag}</small>
+                          <small className="cato">Category: {post.tag}</small>
                           <br />
                           {post.description}
                         </p>
@@ -78,6 +78,12 @@ export default class UserProfile extends Component {
                             onClick={() => this.deletePost(post.id)}
                           >
                             Delete
+                          </button>{" "}
+                          <button
+                            className="button is-small is-info is-link is-light"
+                            onClick={this.props.history.goBack}
+                          >
+                            Back
                           </button>
                         </React.Fragment>
                       </div>

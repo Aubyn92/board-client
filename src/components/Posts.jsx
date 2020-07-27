@@ -23,7 +23,7 @@ export default class Posts extends Component {
                 <article className="media">
                   <div className="media-left">
                     <figure className="image is-128x128">
-                      <p>Likes: {post.like}</p>
+                      {/* <p>Likes: {post.like}</p> */}
                       {post.image && <img src={post.image} alt={post.title} />}
                     </figure>
                   </div>
@@ -50,11 +50,7 @@ export default class Posts extends Component {
                     <div className="column is-10">
                       <nav className="level is-mobile">
                         <div className="level-left">
-                          <Link to className="level-item">
-                            {/* <button className="button is-small is-light is-link is-outlined" onClick={() => this.incrementMe(post.id)}> 💙  Likes: {this.state.count}
-                            </button> */}
-                          </Link>
-                          <div className="column is-10">
+          
                             <Link
                               to={{
                                 pathname: `/posts/${post.id}`,
@@ -66,8 +62,8 @@ export default class Posts extends Component {
                               </button>
                             </Link>
                           </div>
-                        </div>
                       </nav>
+                    <small className="cato">{post.like} Likes</small>
                     </div>
 
                     <div className="column is-10">

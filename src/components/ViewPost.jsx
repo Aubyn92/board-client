@@ -21,12 +21,12 @@ export default class ViewPost extends Component {
     }
   }
 
-  incrementMe = async() => {
+  incrementMe = async () => {
     const id = this.props.match.params.id;
-    let newCount = this.state.count + 1
+    let newCount = this.state.count + 1;
     this.setState({
-      count: newCount
-    })
+      count: newCount,
+    });
 
     let like = this.state.count + 1;
     await fetch(`http://localhost:3000/posts/${id}`, {
@@ -35,9 +35,9 @@ export default class ViewPost extends Component {
         "Content-Type": "application/json",
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
-      body:  JSON.stringify({"post": {"like": like}})
+      body: JSON.stringify({ post: { like: like } }),
     });
-  }
+  };
 
   render() {
     const post = this.state.post;
@@ -50,12 +50,12 @@ export default class ViewPost extends Component {
         <div class="container is-centered">
           <div class="columns is-mobile is-centered">
             <div class="column is-10">
-              {/* <div class="box"> */}
               <article className="media">
-                <div className="media-left">
-                  <figure className="image is-128x128">
-                    {post.image && <img src={post.image} alt={post.title} />}
-                  </figure>
+                  <div className="media-left">
+                    <figure className="image is-128x128">
+                      {/* <p>Likes: {post.like}</p> */}
+                      {post.image && <img src={post.image} alt={post.title} />}
+                    </figure>
                 </div>
 
                 <div class="column is-10">
@@ -73,23 +73,26 @@ export default class ViewPost extends Component {
                         {post.description}
                       </p>
                     </div>
-                    <div class="column is-10">
                     <div className="column is-10">
                       <nav className="level is-mobile">
                         <div className="level-left">
                           <Link to className="level-item">
-                            <button className="button is-small is-light is-link is-outlined" onClick={this.incrementMe}> 💙  Likes: {this.state.count}
+                            <button
+                              className="button is-small is-light is-link is-info is-outlined"
+                              onClick={this.incrementMe}
+                            >
+                              {" "}
+                              💜  Likes: {this.state.count}
                             </button>
                           </Link>
-                          </div>
-                          </nav>
-                          </div>
-                      <button
-                        className="button is-small is-link is-light is-info is-outlined"
-                        onClick={this.props.history.goBack}
-                      >
-                        Back
-                      </button>
+                          <button
+                            className="button is-small is-light is-link is-info is-outlined"
+                            onClick={this.props.history.goBack}
+                          >
+                            Back
+                          </button>
+                        </div>
+                      </nav>
                     </div>
                   </div>
                   <div class="column is-10">
@@ -123,4 +126,3 @@ export default class ViewPost extends Component {
     );
   }
 }
-
