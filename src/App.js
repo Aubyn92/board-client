@@ -13,6 +13,7 @@ import UserProfile from "./components/UserProfile";
 import CategoryPage from "./components/CategoryPage";
 import ViewPost from "./components/ViewPost";
 import Favourite from "./components/Favourite";
+import Comment from "./components/Comment";
 
 class App extends React.Component {
   state = { posts: [] };
@@ -32,6 +33,7 @@ class App extends React.Component {
           <Route exact path="/posts/categorypage" component={CategoryPage} />
           <Route exact path="/posts/:id" component={ViewPost} />
           <Route exact path="/favourite" component={Favourite} />
+          <Route exact path="/comment" component={Comment} />
           <Route component={NoMatch} />
         </Switch>
       </>

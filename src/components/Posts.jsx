@@ -3,14 +3,14 @@ import { Link } from "react-router-dom";
 import moment from "moment";
 
 export default class Posts extends Component {
-  state = { posts: [], count: 0 };
+  state = { posts: [] };
   
-  incrementMe = () => {
-    let newCount = this.state.count + 1;
-    this.setState({
-      count: newCount,
-    });
-  };
+  // incrementMe = () => {
+  //   let newCount = this.state.count + 1;
+  //   this.setState({
+  //     count: newCount,
+  //   });
+  // };
 
   getPosts = async () => {
     const response = await fetch("http://localhost:3000/posts", {});
