@@ -4,7 +4,7 @@ import { useHistory } from "react-router-dom";
 
 const NavBar = () => {
   const history = useHistory();
-  console.log(localStorage.getItem("token"));
+  // console.log(localStorage.getItem("token"));
   if (localStorage.getItem("token") != null) {
     return (
       <div class="display is-flex-mobile">
