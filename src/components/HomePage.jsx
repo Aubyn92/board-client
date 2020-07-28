@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export default class HomePage extends Component {
   render() {
     return (
-      <>
+      // <>
         <section class="hero is-fullheight background">
           <div class="hero-body position">
             <div class="container">
@@ -21,7 +21,7 @@ export default class HomePage extends Component {
             </div>
           </div>
         </section>
-      </>
+      // </>
     );
   }
 }

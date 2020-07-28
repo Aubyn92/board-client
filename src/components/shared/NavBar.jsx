@@ -7,12 +7,14 @@ const NavBar = () => {
   // console.log(localStorage.getItem("token"));
   if (localStorage.getItem("token") != null) {
     return (
-      <div class="display is-flex-mobile">
+      
         <nav class="navbar background-color is-light" role="navigation" aria-label="main navigation">
           <div class="navbar-start">
+            <div class="navbar-brand">
             <a class="navbar-item">
               <Link to="/">BOARD</Link>
             </a>
+            </div>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
@@ -46,16 +48,18 @@ const NavBar = () => {
             </div>
           </div>
         </nav>
-      </div>
+      
     );
   } else {
     return (
-      <div class="display is-flex-mobile">
+     
         <nav class="navbar background-color" role="navigation" aria-label="main navigation">
           <div class="navbar-start">
+            <div class="navbar-brand">
             <a class="navbar-item">
               <Link to="/">BOARD</Link>
             </a>
+            </div>
           </div>
           <div class="navbar-end">
             <div class="navbar-item">
@@ -82,7 +86,7 @@ const NavBar = () => {
             </div>
           </div>
         </nav>
-      </div>
+      
     );
   }
 };

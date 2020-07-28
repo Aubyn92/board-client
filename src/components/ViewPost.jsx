@@ -60,6 +60,8 @@ export default class ViewPost extends Component {
         comments: [...state.comments, comment],
       };
     });
+    alert("Comment submitted!!");
+
   };
 
   onTextAreaChange = (e) => {
@@ -68,10 +70,16 @@ export default class ViewPost extends Component {
   };
 
   renderComments = () => {
-    return this.state.comments.map((comment) => {
+    console.log(this.state.comments)
+    return this.state.comments.map((comment, index) => {
       return (
-        <div className="comment">
-          <p>{comment.body}</p>
+        <div className="comment" key={index}>
+          <p>
+            {" "}
+            {comment.commenter}:{comment.body}
+            </p>
+          {/* <p>{comment.created_at}</p> */}
+          <hr />
         </div>
       );
     });
@@ -148,7 +156,7 @@ export default class ViewPost extends Component {
                       <div className="level-left">
                         <div className="level-item">
                           <button
-                            className="button is-info is-small"
+                            className="button is-link is-small is-light is-outlined"
                             onClick={() => this.onButtonClick(post.id)}
                           >
                             Post Comment
@@ -158,22 +166,12 @@ export default class ViewPost extends Component {
                     </nav>
                   </div>
 
-                  <article class="message is-small is-info">
-                    <div class="message-header">
-                      <p>{this.user_id}</p>
-                      <button
-                        class="delete is-small"
-                        aria-label="delete"
-                      ></button>
-                    </div>
-                    <div class="message-body">{this.renderComments()}</div>
-                  </article>
-
-
- 
-
-  
-  
+                  <div class="column is-10">
+                    <article class="message is-small is-info">
+                 
+                      <div class="message-body">{this.renderComments()}</div>
+                    </article>
+                  </div>
 
                   {/* <div className="comments">{this.renderComments()}</div> */}
                 </div>

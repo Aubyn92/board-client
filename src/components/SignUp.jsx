@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 export default class SignUp extends Component {
-  state = { email: "", password: "" };
+  state = { email: "", password: "", username: "" };
 
   onInputChange = (event) => {
     const key = event.target.id;
