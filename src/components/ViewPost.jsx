@@ -172,6 +172,25 @@ export default class ViewPost extends Component {
                       <div class="message-body">{this.renderComments()}</div>
                     </article>
                   </div>
+                  <React.Fragment>
+                          <Link to={`/posts/${post.id}/edit`}>
+                            <button className="button is-small is-link is-info is-light">
+                              Edit
+                            </button>
+                          </Link>{" "}
+                          <button
+                            className="button is-small is-link is-danger is-light"
+                            onClick={() => this.deletePost(post.id)}
+                          >
+                            Delete
+                          </button>{" "}
+                          <button
+                            className="button is-small is-info is-link is-light"
+                            onClick={this.props.history.goBack}
+                          >
+                            Back
+                          </button>
+                        </React.Fragment>
 
                   {/* <div className="comments">{this.renderComments()}</div> */}
                 </div>

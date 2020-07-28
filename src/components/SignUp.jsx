@@ -12,14 +12,14 @@ export default class SignUp extends Component {
 
   onFormSubmit = async (event) => {
     event.preventDefault();
-    const { email, password } = this.state;
+    const { username, email, password } = this.state;
     try {
       const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/sign-up`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ user: { email, password } }),
+        body: JSON.stringify({ user: { username, email, password } }),
       });
       if (response.status >= 400) {
         throw new Error("incorrect credentials");
@@ -29,7 +29,7 @@ export default class SignUp extends Component {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ auth: { email, password } }),
+          body: JSON.stringify({ auth: { username, email, password } }),
         });
         const { jwt } = await response.json();
         localStorage.setItem("token", jwt);
@@ -41,7 +41,7 @@ export default class SignUp extends Component {
   };
 
   render() {
-    const { email, password } = this.state;
+    const { username, email, password } = this.state;
     return (
       <div className="container">
         <div className="columns is-centered">
@@ -51,6 +51,26 @@ export default class SignUp extends Component {
                 <h1 className="title has-text-centered">Sign Up</h1>
               </div>
               <form onSubmit={this.onFormSubmit}>
+              <div className="field">
+                  <label className="label" htmlFor="username">
+                    Username
+                  </label>
+                  <div className="control has-icons-left">
+                    <input
+                      className="input"
+                      type="username"
+                      name="username"
+                      id="username"
+                      value={email}
+                      data-testid="username"
+                      placeholder="Username"
+                      onChange={this.onInputChange}
+                    />
+                    <span class="icon is-small is-left">
+                      <i class="fas fa-user"></i>
+                    </span>
+                  </div>
+                </div>
                 <div className="field">
                   <label className="label" htmlFor="email">
                     Email
