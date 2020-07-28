@@ -151,13 +151,31 @@ export default class ViewPost extends Component {
                             className="button is-info is-small"
                             onClick={() => this.onButtonClick(post.id)}
                           >
-                            Submit
+                            Post Comment
                           </button>
                         </div>
                       </div>
                     </nav>
                   </div>
-                  <div className="comments">{this.renderComments()}</div>
+
+                  <article class="message is-small is-info">
+                    <div class="message-header">
+                      <p>{this.user_id}</p>
+                      <button
+                        class="delete is-small"
+                        aria-label="delete"
+                      ></button>
+                    </div>
+                    <div class="message-body">{this.renderComments()}</div>
+                  </article>
+
+
+ 
+
+  
+  
+
+                  {/* <div className="comments">{this.renderComments()}</div> */}
                 </div>
               </article>
               <hr />

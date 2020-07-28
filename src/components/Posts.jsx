@@ -6,30 +6,36 @@ export default class Posts extends Component {
   state = { posts: [] };
 
   getPosts = async () => {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts`, {});
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/posts`,
+      {}
+    );
 
     const data = await response.json();
     console.log(data);
     this.setState({ posts: data.posts });
   };
 
-onButtonClick = async (id) => {
-  const body = {body: this.state.comment}
-  const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts/${id}/comments`, {
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-      "Content-Type": "application/json"
-    },
-    method: "POST",
-    body: JSON.stringify(body), 
-  });
-console.log(await response.json())
-}
+  onButtonClick = async (id) => {
+    const body = { body: this.state.comment };
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/posts/${id}/comments`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          "Content-Type": "application/json",
+        },
+        method: "POST",
+        body: JSON.stringify(body),
+      }
+    );
+    console.log(await response.json());
+  };
 
-onTextAreaChange = (e) => {
-  const text = e.target.value
-  this.setState({comment: text})
-}
+  onTextAreaChange = (e) => {
+    const text = e.target.value;
+    this.setState({ comment: text });
+  };
 
   renderPosts = () => {
     return this.state.posts.map((post, index) => {
@@ -66,25 +72,26 @@ onTextAreaChange = (e) => {
                       </div>
                     </div>
                     <div className="column is-10">
+                      <small className="cato">{post.like} Likes</small>
+                    </div>
+                    <div className="column is-10">
                       <nav className="level is-mobile">
                         <div className="level-left">
-          
-                            <Link
-                              to={{
-                                pathname: `/posts/${post.id}`,
-                                state: post,
-                              }}
-                            >
-                              <button className="button is-small is-link is-light is-outlined">
-                                View
-                              </button>
-                            </Link>
-                          </div>
+                          <Link
+                            to={{
+                              pathname: `/posts/${post.id}`,
+                              state: post,
+                            }}
+                          >
+                            <button className="button is-small is-link is-light is-outlined">
+                              View
+                            </button>
+                          </Link>
+                        </div>
                       </nav>
-                    <small className="cato">{post.like} Likes</small>
                     </div>
 
-                    <div className="column is-10">
+                    {/* <div className="column is-10">
                       <div className="field">
                         <div className="control">
                           <textarea
@@ -94,9 +101,9 @@ onTextAreaChange = (e) => {
                           ></textarea>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
-                    <div className="column is-10">
+                    {/* <div className="column is-10">
                       <nav className="level">
                         <div className="level-left">
                           <div className="level-item">
@@ -106,7 +113,7 @@ onTextAreaChange = (e) => {
                           </div>
                         </div>
                       </nav>
-                    </div>
+                    </div> */}
                   </div>
                 </article>
                 <hr />
@@ -123,7 +130,7 @@ onTextAreaChange = (e) => {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.state);
     return <div>{this.renderPosts()}</div>;
   }
 }

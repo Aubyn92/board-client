@@ -10,9 +10,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import UserProfile from "./components/UserProfile";
-import CategoryPage from "./components/CategoryPage";
 import ViewPost from "./components/ViewPost";
-import Comment from "./components/Comment";
 
 class App extends React.Component {
   state = { posts: [] };
@@ -29,9 +27,7 @@ class App extends React.Component {
           <Route exact path="/login" component={Login} />
           <Route exact path="/sign-up" component={SignUp} />
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/posts/categorypage" component={CategoryPage} />
           <Route exact path="/posts/:id" component={ViewPost} />
-          <Route exact path="/comment" component={Comment} />
           <Route component={NoMatch} />
         </Switch>
       </>
