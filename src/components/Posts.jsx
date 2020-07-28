@@ -13,6 +13,24 @@ export default class Posts extends Component {
     this.setState({ posts: data.posts });
   };
 
+onButtonClick = async (id) => {
+  const body = {body: this.state.comment}
+  const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts/${id}/comments`, {
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      "Content-Type": "application/json"
+    },
+    method: "POST",
+    body: JSON.stringify(body), 
+  });
+console.log(await response.json())
+}
+
+onTextAreaChange = (e) => {
+  const text = e.target.value
+  this.setState({comment: text})
+}
+
   renderPosts = () => {
     return this.state.posts.map((post, index) => {
       return (
@@ -72,6 +90,7 @@ export default class Posts extends Component {
                           <textarea
                             className="textarea has-fixed-size"
                             placeholder="Add a comment..."
+                            onChange={this.onTextAreaChange}
                           ></textarea>
                         </div>
                       </div>
@@ -81,9 +100,9 @@ export default class Posts extends Component {
                       <nav className="level">
                         <div className="level-left">
                           <div className="level-item">
-                            <Link to className="button is-info is-small">
+                            <button onClick={() => this.onButtonClick(post.id)} className="button is-info is-small">
                               Submit
-                            </Link>
+                            </button>
                           </div>
                         </div>
                       </nav>
@@ -104,6 +123,7 @@ export default class Posts extends Component {
   }
 
   render() {
+    console.log(this.state)
     return <div>{this.renderPosts()}</div>;
   }
 }
