@@ -47,7 +47,6 @@ export default class Posts extends Component {
                 <article className="media">
                   <div className="media-left">
                     <figure className="image is-128x128">
-                      {/* <p>Likes: {post.like}</p> */}
                       {post.image && <img src={post.image} alt={post.title} />}
                     </figure>
                   </div>

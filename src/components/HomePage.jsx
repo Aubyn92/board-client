@@ -5,8 +5,8 @@ export default class HomePage extends Component {
     return (
       // <>
       <section class="hero is-fullheight background">
-        <div class="hero-body position">
-          <div class="container">
+        <div class="hero-body position is-mobile">
+          <div class="container is-mobile">
             <h1 class="hello">Feel connected</h1>
             <h2 class="hello-little">
               Share your interests, discover new ones

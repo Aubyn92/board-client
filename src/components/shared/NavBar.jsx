@@ -19,6 +19,7 @@ const NavBar = () => {
           </div>
         </div>
         <div class="navbar-end">
+        <div class="navbar-brand">
           <div class="navbar-item">
             <nav class="breadcrumb" aria-label="breadcrumbs">
               <ul>
@@ -47,6 +48,7 @@ const NavBar = () => {
                 </li>
               </ul>
             </nav>
+          </div>
           </div>
         </div>
       </nav>
