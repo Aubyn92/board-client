@@ -90,30 +90,6 @@ export default class Posts extends Component {
                         </div>
                       </nav>
                     </div>
-
-                    {/* <div className="column is-10">
-                      <div className="field">
-                        <div className="control">
-                          <textarea
-                            className="textarea has-fixed-size"
-                            placeholder="Add a comment..."
-                            onChange={this.onTextAreaChange}
-                          ></textarea>
-                        </div>
-                      </div>
-                    </div> */}
-
-                    {/* <div className="column is-10">
-                      <nav className="level">
-                        <div className="level-left">
-                          <div className="level-item">
-                            <button onClick={() => this.onButtonClick(post.id)} className="button is-info is-small">
-                              Submit
-                            </button>
-                          </div>
-                        </div>
-                      </nav>
-                    </div> */}
                   </div>
                 </article>
                 <hr />
