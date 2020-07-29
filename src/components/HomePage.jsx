@@ -1,11 +1,9 @@
 import React, { Component } from "react";
-import NavBar from "./shared/NavBar";
 
 export default class HomePage extends Component {
   render() {
     return (
       <section class="hero is-fullheight background">
-        <NavBar />
         <div class="hero-body position is-mobile">
           <div class="container is-mobile">
             <h1 class="title is-1 is-family-code is-spaced has-text-centered has-text-centered-mobile">Feel connected</h1>
