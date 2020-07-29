@@ -5,6 +5,10 @@ import moment from "moment";
 
 export default class ViewPost extends Component {
   state = { post: null, error: false, count: 0, comments: [] };
+  constructor(props) {
+    super(props);
+    this.textArea = React.createRef();
+  }
 
   async componentDidMount() {
     const id = this.props.match.params.id;
@@ -41,8 +45,8 @@ export default class ViewPost extends Component {
     });
   };
 
-  onButtonClick = async (id) => {
-    const body = { body: this.state.comment };
+  onButtonClick = async (id, e) => {
+    const body = { comment: { body: this.state.comment } };
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND_URL}/posts/${id}/comments`,
       {
@@ -60,8 +64,7 @@ export default class ViewPost extends Component {
         comments: [...state.comments, comment],
       };
     });
-    alert("Comment submitted!!");
-
+    this.textArea.current.value = "";
   };
 
   onTextAreaChange = (e) => {
@@ -70,15 +73,14 @@ export default class ViewPost extends Component {
   };
 
   renderComments = () => {
-    console.log(this.state.comments)
+    console.log(this.state.comments);
     return this.state.comments.map((comment, index) => {
       return (
         <div className="comment" key={index}>
           <p>
             {" "}
             {comment.commenter}:{comment.body}
-            </p>
-          {/* <p>{comment.created_at}</p> */}
+          </p>
           <hr />
         </div>
       );
@@ -87,6 +89,7 @@ export default class ViewPost extends Component {
 
   render() {
     const post = this.state.post;
+    // const comments = this.state.comments;
     const error = this.state.error;
     if (error) {
       return <NoMatch />;
@@ -142,11 +145,16 @@ export default class ViewPost extends Component {
                   </div>
                   <div class="column is-10">
                     <div className="field">
-                      <div className="control">
+                      <div
+                        className="control"
+                      >
                         <textarea
                           class="textarea has-fixed-size"
+                          type="text"
+                          name="body"
                           placeholder="Add a comment..."
                           onChange={this.onTextAreaChange}
+                          ref={this.textArea}
                         ></textarea>
                       </div>
                     </div>
@@ -157,7 +165,7 @@ export default class ViewPost extends Component {
                         <div className="level-item">
                           <button
                             className="button is-link is-small is-light is-outlined"
-                            onClick={() => this.onButtonClick(post.id)}
+                            onClick={(e) => this.onButtonClick(post.id, e)}
                           >
                             Post Comment
                           </button>
@@ -168,31 +176,9 @@ export default class ViewPost extends Component {
 
                   <div class="column is-10">
                     <article class="message is-small is-info">
-                 
-                      <div class="message-body">{this.renderComments()}</div>
+                      <div class="message-body color-p">{this.renderComments()}</div>
                     </article>
                   </div>
-                  <React.Fragment>
-                          <Link to={`/posts/${post.id}/edit`}>
-                            <button className="button is-small is-link is-info is-light">
-                              Edit
-                            </button>
-                          </Link>{" "}
-                          <button
-                            className="button is-small is-link is-danger is-light"
-                            onClick={() => this.deletePost(post.id)}
-                          >
-                            Delete
-                          </button>{" "}
-                          <button
-                            className="button is-small is-info is-link is-light"
-                            onClick={this.props.history.goBack}
-                          >
-                            Back
-                          </button>
-                        </React.Fragment>
-
-                  {/* <div className="comments">{this.renderComments()}</div> */}
                 </div>
               </article>
               <hr />

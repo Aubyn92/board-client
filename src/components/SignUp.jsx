@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 export default class SignUp extends Component {
-  state = { email: "", password: "", username: "" };
+  state = { email: "", password: "" };
 
   onInputChange = (event) => {
     const key = event.target.id;
@@ -12,14 +12,14 @@ export default class SignUp extends Component {
 
   onFormSubmit = async (event) => {
     event.preventDefault();
-    const { username, email, password } = this.state;
+    const { email, password } = this.state;
     try {
       const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/sign-up`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ user: { username, email, password } }),
+        body: JSON.stringify({ user: { email, password } }),
       });
       if (response.status >= 400) {
         throw new Error("incorrect credentials");
@@ -29,7 +29,7 @@ export default class SignUp extends Component {
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({ auth: { username, email, password } }),
+          body: JSON.stringify({ auth: { email, password } }),
         });
         const { jwt } = await response.json();
         localStorage.setItem("token", jwt);
@@ -41,7 +41,7 @@ export default class SignUp extends Component {
   };
 
   render() {
-    const { username, email, password } = this.state;
+    const { email, password } = this.state;
     return (
       <div className="container">
         <div className="columns is-centered">
@@ -51,7 +51,7 @@ export default class SignUp extends Component {
                 <h1 className="title has-text-centered">Sign Up</h1>
               </div>
               <form onSubmit={this.onFormSubmit}>
-              <div className="field">
+              {/* <div className="field">
                   <label className="label" htmlFor="username">
                     Username
                   </label>
@@ -70,7 +70,7 @@ export default class SignUp extends Component {
                       <i class="fas fa-user"></i>
                     </span>
                   </div>
-                </div>
+                </div> */}
                 <div className="field">
                   <label className="label" htmlFor="email">
                     Email
