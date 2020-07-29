@@ -6,11 +6,14 @@ export default class UserProfile extends Component {
   state = { posts: [] };
 
   getPosts = async () => {
-    const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/profile`, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-      },
-    });
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND_URL}/profile`,
+      {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      }
+    );
 
     const data = await response.json();
     console.log(data);

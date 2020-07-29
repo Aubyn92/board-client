@@ -82,7 +82,8 @@ export default class NewPost extends Component {
                 <label className="label" htmlFor="description">
                   Description
                 </label>
-                <textarea class="textarea"
+                <textarea
+                  class="textarea"
                   name="description"
                   id="description"
                   onChange={this.onInputChange}

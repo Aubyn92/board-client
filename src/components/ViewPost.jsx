@@ -89,7 +89,6 @@ export default class ViewPost extends Component {
 
   render() {
     const post = this.state.post;
-    // const comments = this.state.comments;
     const error = this.state.error;
     if (error) {
       return <NoMatch />;
@@ -145,9 +144,7 @@ export default class ViewPost extends Component {
                   </div>
                   <div class="column is-10">
                     <div className="field">
-                      <div
-                        className="control"
-                      >
+                      <div className="control">
                         <textarea
                           class="textarea has-fixed-size"
                           type="text"
@@ -176,7 +173,9 @@ export default class ViewPost extends Component {
 
                   <div class="column is-10">
                     <article class="message is-small is-info">
-                      <div class="message-body color-p">{this.renderComments()}</div>
+                      <div class="message-body color-p">
+                        {this.renderComments()}
+                      </div>
                     </article>
                   </div>
                 </div>

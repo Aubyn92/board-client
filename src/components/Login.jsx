@@ -17,13 +17,16 @@ export default class Login extends Component {
       auth: { email, password },
     };
     try {
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/login`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body),
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(body),
+        }
+      );
       if (response.status >= 400) {
         throw new Error("incorrect credentials");
       } else {

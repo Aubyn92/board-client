@@ -29,13 +29,16 @@ export default class EditPost extends Component {
     if (uploadedImage) {
       const data = new FormData();
       data.append("post[image]", uploadedImage);
-      const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts/${id}`, {
-        method: "PUT",
-        body: data,
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND_URL}/posts/${id}`,
+        {
+          method: "PUT",
+          body: data,
+          headers: {
+            Authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
       image = await response.text();
     }
 
