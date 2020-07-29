@@ -77,10 +77,7 @@ export default class ViewPost extends Component {
     return this.state.comments.map((comment, index) => {
       return (
         <div className="comment" key={index}>
-          <p>
-            {" "}
-            {comment.commenter}:{comment.body}
-          </p>
+          <p className="cato"> {comment.commenter}</p> {comment.body}
           <hr />
         </div>
       );
@@ -123,21 +120,25 @@ export default class ViewPost extends Component {
                     <div className="column is-10">
                       <nav className="level is-mobile">
                         <div className="level-left">
-                          <Link to className="level-item">
-                            <button
-                              className="button is-small is-light is-link is-info is-outlined"
-                              onClick={this.incrementMe}
-                            >
-                              {" "}
-                              💜 Likes: {this.state.count}
-                            </button>
-                          </Link>
-                          <button
-                            className="button is-small is-light is-link is-info is-outlined"
-                            onClick={this.props.history.goBack}
-                          >
-                            Back
-                          </button>
+                          <div class="field is-grouped">
+                            <p class="control">
+                              <button
+                                className="button is-small is-light is-link is-info is-outlined"
+                                onClick={this.incrementMe}
+                              >
+                                {" "}
+                                💜 Likes: {this.state.count}
+                              </button>
+                            </p>
+                            <p class="control">
+                              <button
+                                className="button is-small is-light is-link is-info is-outlined"
+                                onClick={this.props.history.goBack}
+                              >
+                                Back
+                              </button>
+                            </p>
+                          </div>
                         </div>
                       </nav>
                     </div>
