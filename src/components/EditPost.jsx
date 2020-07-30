@@ -54,11 +54,6 @@ export default class EditPost extends Component {
   };
 
   async componentDidMount() {
-    // const { id } = this.state;
-    // const foundPost = this.context.posts.find((post) => {
-    // return post.id === this.state.id
-    // })
-    // this.setState({ ...foundPost, loading: false }); #removed id below
     const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}/posts`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
